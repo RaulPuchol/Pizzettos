@@ -1,10 +1,27 @@
 * {
     margin: 0%;
-    font-family: 'Roboto'
+    
 }
 
 
 /*---------------------------------- HEADER ----------------------------------*/
+
+#ad {
+    background-color: #0150A8;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins';
+    font-weight: bold;
+    padding: 0.3% 0%;
+    
+}
+
+header {
+    position:sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
 
 #head {
     background-color: #001C85;
@@ -26,6 +43,7 @@
     align-items: center;
     width: 40%;
     justify-content: right;
+    
 }
 
 .searcher input {
@@ -41,12 +59,13 @@
 .searcher input::placeholder {
     font-weight: bold;
     color: #2D337E;
+    font-family: 'Roboto';
 }
 .searcher button {
     border-radius:  0px 50px 50px 0px;
     border: 0px;
-    padding-top: 1.4%;
-    padding-bottom: 1.4%;
+    padding-top: 1.3%;
+    padding-bottom: 1.3%;
     padding-right: 5%;
     padding-left: 5%;
     background-color: white;
@@ -69,6 +88,7 @@
     color: white;
     font-weight: lighter;
     text-decoration: none;
+    font-family: 'Roboto';
 }
 
 
@@ -102,6 +122,7 @@
     font-weight: bold;
     font-size: 15px;
     background-color: #ffffff;
+    font-family: 'Roboto';
 }
 
 #headbuttons .buttons .red button{
@@ -123,17 +144,18 @@
 }
 
 #carrusel .imagenes img{
-    width: 1920px;
+    width: 1903.4px;
     height: 695px;
 }
 
-/*---------------------------------- MIND INDEX ----------------------------------*/
+/*---------------------------------- MID INDEX ----------------------------------*/
 
 #midindex{
     margin: 2.5% 0px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-family: 'Nunito'
 }
 
 #midindex .midtext {
@@ -141,4 +163,57 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 4%;
+}
+#midindex h1 {
+    margin-bottom: 1%;
+}
+
+#midindex h1, #midindex h2 {
+    color:#001C85;
+}
+.midindexcarruselmain h2 {
+    margin-bottom: 5%;
+    text-align: center;
+}
+.midindexcarruselmain i{
+    font-size: 200%;
+    color: #001C85;
+}
+
+.midindexcarrusel {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+}
+
+.midindexcarrusel a{
+    display: flex;
+    align-items: center;
+    margin: 10% 0%;
+    color: #2E4597;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.midindexcarrusel p {
+    color: #2D337E;
+    font-size: 21px;
+    font-weight: bolder;
+}
+
+
+/*---------------------------------- BOTTOM INDEX ----------------------------------*/
+
+#bottomindex{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#bottomindex img {
+    width: 90%;
 }
