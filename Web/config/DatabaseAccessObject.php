@@ -5,9 +5,10 @@
  * centraliza todas las operaciones de la base de datos, todas las salidas de las funciones devuelven valores
  * nunca tiene que devolver un objeto tipo mysqli para evitar problemas.
  */
-
+/*
 class DatabaseAccessObject
 {
+
     // Conexion con la BBDD
     private $conn;
 
@@ -52,7 +53,7 @@ class DatabaseAccessObject
             $productos [] = $producto;
         
 
-        */
+        *aquiiba una barra*
         // Forma simplificada de hacer lo mismo
         $productos = [];
         $i = 0;
@@ -83,6 +84,6 @@ class DatabaseAccessObject
     
     }
 
-}
+}*/
 
 ?>

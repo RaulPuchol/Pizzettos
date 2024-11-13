@@ -1,5 +1,5 @@
 <?php
-define("url","http://localhost/PROJECTE_1//");
-define("default_action","index");
+//define("url","http://localhost/Pizzettos//");
+//define("default_action","main");
 
 ?>

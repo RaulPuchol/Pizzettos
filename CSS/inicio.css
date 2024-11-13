@@ -1,0 +1,93 @@
+
+/*---------------------------------- MID INDEX ----------------------------------*/
+
+#midindex{
+    margin: 2.5% 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Nunito'
+}
+
+#midindex .midtext {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 4%;
+}
+#midindex h1 {
+    margin-bottom: 1%;
+    font-size: 33px;
+}
+
+#midindex h1, #midindex h2 {
+    color:#001C85;
+}
+.midindexcarruselmain h2 {
+    margin-bottom: 5%;
+    text-align: center;
+}
+.midindexcarruselmain i{
+    font-size: 200%;
+    color: #001C85;
+}
+
+.midindexcarrusel {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+}
+
+.midindexcarrusel a{
+    display: flex;
+    align-items: center;
+    margin: 10% 0%;
+    color: #2E4597;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.midindexcarrusel p {
+    color: #2D337E;
+    font-size: 21px;
+    font-weight: bolder;
+}
+
+
+/*---------------------------------- BOTTOM INDEX ----------------------------------*/
+
+#bottomindex{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#bottomindex .imagebig {
+    width: 70%;
+    border-radius: 15px;
+    margin-bottom: 2%;
+}
+
+.bottomindeximages {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottomindeximages .images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    margin-bottom: 2%;
+}
+
+.bottomindeximages .images img {
+    width: 430px;
+    height: 430px;
+    border-radius: 15px;
+}

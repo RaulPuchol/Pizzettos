@@ -1,17 +1,17 @@
 <?php
 
-include_once("config/DatabaseAccessObject.php");
-include_once("model/Product.php");
-include_once("model/Productos/Shirt.php");
+//include_once("config/DatabaseAccessObject.php");
+//include_once("model/Product.php");
+//include_once("model/Productos/Shirt.php");
 
 class ProductController
 {
     public function index()
     {
-        $dao = new DatabaseAccessObject();
-        $productos = $dao->getAllCamisetas("nombre");
+        //$dao = new DatabaseAccessObject();
+       //$productos = $dao->getAllCamisetas("nombre");
         
-        include_once("view/index.php");
+        include_once("view/main.php");
     }
 
     public function delete($id)

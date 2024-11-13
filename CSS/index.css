@@ -148,72 +148,32 @@ header {
     height: 695px;
 }
 
-/*---------------------------------- MID INDEX ----------------------------------*/
 
-#midindex{
-    margin: 2.5% 0px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Nunito'
-}
+/*---------------------------------- FOOTER ----------------------------------*/
 
-#midindex .midtext {
+footer {
+    background-color: #273C87; 
     display: flex;
+
+    flex-direction: row;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 60%;
-    text-align: center;
-    margin-bottom: 4%;
-}
-#midindex h1 {
-    margin-bottom: 1%;
+    padding: 2% 0%;
+    gap: 15%;
+    color: white;
 }
 
-#midindex h1, #midindex h2 {
-    color:#001C85;
-}
-.midindexcarruselmain h2 {
-    margin-bottom: 5%;
-    text-align: center;
-}
-.midindexcarruselmain i{
-    font-size: 200%;
-    color: #001C85;
-}
-
-.midindexcarrusel {
+.footertext {
     display: flex;
-    align-items: center;
-    gap: 30px;
+    flex-direction: column;
     
 }
 
-.midindexcarrusel a{
-    display: flex;
-    align-items: center;
-    margin: 10% 0%;
-    color: #2E4597;
+.footertext a {
+    color: white;
     text-decoration: none;
-    font-size: 21px;
+    margin-top: 10%;
 }
 
-.midindexcarrusel p {
-    color: #2D337E;
-    font-size: 21px;
-    font-weight: bolder;
-}
-
-
-/*---------------------------------- BOTTOM INDEX ----------------------------------*/
-
-#bottomindex{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-#bottomindex img {
-    width: 90%;
+.footertext a:hover {
+    color: #EBBB2F;
 }

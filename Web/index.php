@@ -1,12 +1,12 @@
 <?php
 
-include_once("./controller/ProductController.php");
+include_once("./controller/ProductoController.php");
 
-
+header("Location: view/main.html");
 
         if(!isset($_GET["controller"]))
         {
-            header("Location:".$url."?controller=Product&action=index");
+            header("Location:".$url."?action=main");
         }
         else
         {
