@@ -1,10 +1,22 @@
 * {
     margin: 0%;
+    padding: 0;  /* El !important asegura que se aplique */
+    --bs-gutter-x: 0 !important;
     
 }
 
+p {
+    margin-bottom: 0 !important
 
-/*---------------------------------- HEADER ----------------------------------*/
+}
+
+
+
+
+
+/*---------------------------------- HEADER & FOOTER ----------------------------------*/
+
+/*---------------------------------- HEADER -------------------------------------------*/
 
 #ad {
     background-color: #0150A8;
@@ -13,6 +25,7 @@
     font-family: 'Poppins';
     font-weight: bold;
     padding: 0.3% 0%;
+    font-size: 13px;
     
 }
 
@@ -22,38 +35,35 @@ header {
     width: 100%;
     z-index: 999;
 }
-
-#head {
+.background {
     background-color: #001C85;
     width: 100%;
-    height: 10%;
+}
+#head {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
-.logo {
-    width: 12%;
-}
 .logo img {
-    width: 80%;
+    width: 180px;
 }
 .searcher {
     display: flex;
     align-items: center;
-    width: 40%;
-    justify-content: right;
+    width: 100%;
+    justify-content: center;
     
 }
 
 .searcher input {
-    border-radius:  50px 0px 0px 50px;
+    border-radius: 50px 0px 0px 50px;
     border: 0px;
     padding-left: 5%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: 28px;
-    width: 55%;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+    font-size: 22px;
+    width: 60%;
 }
 
 .searcher input::placeholder {
@@ -64,38 +74,40 @@ header {
 .searcher button {
     border-radius:  0px 50px 50px 0px;
     border: 0px;
-    padding-top: 1.3%;
-    padding-bottom: 1.3%;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
     padding-right: 5%;
     padding-left: 5%;
     background-color: white;
     color: #2D337E;
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .icons {
     display: flex;
     align-items: center;
     gap: 2%;
-    width: 25%;
     justify-content: right;
-    margin: 5px;
+    margin-right: 1%;
 }
 .icons div {
     margin-left: 10px;
+    
 }
 .icons a {
     color: white;
-    font-weight: lighter;
     text-decoration: none;
     font-family: 'Roboto';
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
 }
-
 
 .icons i{
     color: white;
-    font-size: 25px;
-    padding-bottom: 10px;
+    font-size: 24px;
 }
 
 .icons div {
@@ -105,19 +117,25 @@ header {
     text-align: center;
 }
 
+#headbuttons {
+    display: flex;
+    justify-content: center;
+    background: white;
+}
+
 #headbuttons .buttons{
     background-color: #ffffff;
-    width: 100%;
-    height: 50px;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 65%;
 }
 
 #headbuttons .buttons div button{
     height: 50px;
     border: 0;
-    width: 160px;
+    width: 100%;
     border-bottom: solid 2px white;
     font-weight: bold;
     font-size: 15px;
@@ -143,23 +161,18 @@ header {
     color:#C4281A;
 }
 
-#carrusel .imagenes img{
-    width: 1903.4px;
-    height: 695px;
-}
-
-
-/*---------------------------------- FOOTER ----------------------------------*/
+/*---------------------------------- FOOTER ---------------------------------------*/
 
 footer {
     background-color: #273C87; 
-    display: flex;
+}
 
-    flex-direction: row;
-    justify-content: center;
+footer div{
+    
+    display: flex;
     padding: 2% 0%;
-    gap: 15%;
     color: white;
+    margin-left: 5%;
 }
 
 .footertext {
@@ -171,9 +184,279 @@ footer {
 .footertext a {
     color: white;
     text-decoration: none;
-    margin-top: 10%;
+    margin-top: 0%;
+    display: flex;
+    flex-direction: column;
 }
 
 .footertext a:hover {
     color: #EBBB2F;
+}
+/*--------------------------------------------------------------------------------*/
+
+
+
+/*---------------------------------- PAGINACION -------------------------------------*/
+#paginacion {
+    margin-left: 15%;
+    margin-bottom: 1%;
+    margin-right: 15%;
+}
+#paginacion span a {
+    color: #2E4597;
+    text-decoration: none;
+}
+
+#paginacion h4 {
+    margin-top: 1%;
+    color: #2E4597;
+}
+
+#paginacion p {
+    color: #565656;
+}
+/*--------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/*---------------------------------- INDEX --------------------------------------*/
+
+
+/*---------------------------------- MID INDEX ----------------------------------*/
+
+.carrusel .imagenes img{
+    width: 100%;
+}
+
+#midindex{
+    margin: 2.5% 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Nunito'
+}
+
+#midindex .midtext {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 4%;
+}
+#midindex h1 {
+    margin-bottom: 1%;
+    font-size: 33px;
+}
+
+#midindex h1, #midindex h2 {
+    color:#001C85;
+}
+
+
+.midindexcarruselmain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.midindexcarruselmain h2 {
+    margin-bottom: 5%;
+    text-align: center;
+}
+.midindexcarruselmain i{
+    font-size: 200%;
+    color: #001C85;
+}
+
+.midindexcarrusel div {
+    width: 234px;
+}
+
+
+.midindexcarrusel div img {
+    width: 234px;
+    height: 234px;
+}
+
+.midindexcarrusel a{
+    display: flex;
+    align-items: center;
+    margin: 10% 0%;
+    color: #2E4597;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.midindexcarrusel p {
+    color: #2D337E;
+    font-size: 21px;
+    font-weight: bolder;
+}
+
+
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-left: 50px;
+    
+}
+
+@media only screen {
+
+    .swiper[dir="rtl"] .swiper-slide.swiper-slide-active:first-child {
+      transform: translateX(-50%);
+    }
+
+    .swiper[dir="rtl"] .swiper-slide.swiper-slide-next:nth-child(2) {
+      transform: translateX(-55%);
+    }
+
+}
+
+
+/*---------------------------------- BOTTOM INDEX ----------------------------------*/
+
+#bottomindex{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+#bottomindex .imagebig {
+    width: 70%;
+    border-radius: 15px;
+    margin-bottom: 2%;
+    object-fit: cover;
+}
+
+.bottomindeximages {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+.bottomindeximages .images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+
+}
+
+.bottomindeximages .images div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottomindeximages .images div img {
+    width: 375px;
+    border-radius: 15px;
+   
+}
+
+
+/*---------------------------------- PRODUCTOS -------------------------------------*/
+
+/*---------------------------------- PRODUCTOSCONTAINER -------------------------------------*/
+#productoscontainer {
+    display:flex;
+    justify-content: center;
+}
+
+#productoscontainer .row {
+    display:flex;
+    
+    
+    width: 75%;
+}
+
+
+
+
+/*---------------------------------- PRODUCTOS LEFT -------------------------------------*/
+
+.productosleft {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 20%;
+}
+
+.accordion-item {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-left: 10%;
+    margin-bottom: 2%;
+}
+
+.accordion-button p{
+    color:#001C85;
+    font-weight: bold;
+}
+
+/*---------------------------------- PRODUCTOS RIGHT -------------------------------------*/
+
+#productoscontainer .productosright {
+    display: flex;
+    flex: 0 0 65%;
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente fila */
+    
+    
+}
+
+.productosright .producto{
+    flex: 0 0 33%; /* Tres productos por fila con espacio entre ellos */
+    margin-bottom: 5%;
+    margin-right: 3px;
+}
+
+.productosright h2 {
+    margin-bottom: 5%;
+    text-align: center;
+}
+.productosright i{
+    font-size: 150%;
+    color: #2D337E;
+    margin-top: 3%;
+}
+
+.productosright div {
+    width: 234px;
+}
+
+
+.productosright div img {
+    width: 234px;
+    height: 234px;
+}
+
+.productosright a{
+    display: flex;
+    align-items: center;
+    margin: 10% 0%;
+    color: #2E4597;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.productosright p {
+    color: #2D337E;
+    font-size: 48px;
+    font-weight: bolder;
 }

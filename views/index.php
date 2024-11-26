@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -11,109 +11,124 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <title>Pizzettos</title>
 </head>
 <body>
-<div id="ad">
-        <p>CONTACTA EN PEDIDOS@PIZZETTOS.ES SI TIENES ALGÚN PROBLEMA</p>
+<?php
+include_once header;
+?>
+<div id="carouselExampleAutoplaying " class="carousel slide carrusel" data-bs-ride="carousel">
+    <div class="carousel-inner imagenes">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="Images/webadd (1).png" alt="Imagen 1">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="Images/webadd (1).png" alt="Imagen 2">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="Images/webadd (1).png" alt="Imagen 3">
+        </div>
     </div>
-    <header>   
-        <div id="sticky">
-            <div id="head">
-                <div class="logo">
-                    <img src="Images/Logo.png">  
-                </div>
-                <div class="searcher">
-                    <input type="text" placeholder="Buscar">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
-                <div class="icons">
-                    <div>
-                        <a href="#menu"><i class="fa-solid fa-pizza-slice"></i><p>EL CLUB</p></a>
-                    </div>
-                    <div>
-                        <a href="#store"><i class="fa-solid fa-store"></i><p>TIENDA</p></a>
-                    </div>
-                    <div>
-                        <a href="#menu"><i class="fa-regular fa-heart"></i><p>FAVORITOS</p></a>
-                    </div>
-                    <div>
-                        <a href="#menu"><i class="fa-regular fa-user"></i><p>PERFIL</p></a>
-                    </div>
-                    <div>
-                        <a href="#menu"><i class="fa-solid fa-bag-shopping"></i><p>MI CESTA</p></a>
-                    </div>
-                </div>
-            </div>
-            <div id="headbuttons">
-                <div class="buttons">
-                    <div class="red">
-                        <button href="#menu">SÚPER OFERTTAS</button>
-                    </div>
-                    <div class="blue">
-                        <button href="#store">PIZZAS</button>
-                    </div>
-                    <div class="blue">
-                        <button href="#menu">MENÚS <i class="fa-solid fa-angle-down"></i></button>
-                    </div>
-                    <div class="blue">
-                        <button href="#menu">PROMOCIONES <i class="fa-solid fa-angle-down"></i></button>
-                    </div>
-                    <div class="blue">
-                        <button href="#menu">25% Dto. DESDE WEB</button>
-                    </div>
-                    <div class="blue">
-                        <button href="#menu">ENTRANTES</button>
-                    </div>
-                    <div class="blue">
-                        <button href="#menu">BEBIDAS</button>
-                    </div>
-                    <div class="blue">
-                        <button href="#menu">EXTRAS <i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div> 
+</div>
+<section id="midindex">
+    <div class="midtext">
+        <h1>Pizzería online</h1>
+        <p>Descubre en nuestra tienda de Pizzeria más de 1000 referencias diferentes con las mejores marcas y licencias en todos los productos. Desde Pizzas de italia, Pizzas hechas por nuestros clientes, pasando por los mejores chefs.</p>
+    </div>
+    <div class="swiper mySwiper w-75 midindexcarruselmain ">
+        <h2>Las Pizzas mas vendidas</h2>
+    
+        <div class="swiper-wrapper midindexcarrusel">
         
-    </header>
-    <?php
-        include_once($view);
-    ?>
-    <footer>
-        <div class="footertext">
-            <h4>Quiénes Somos</h4>
-            <p>___</p>
-            <a href="#">Sobre nosotros</a>
-            <a href="#">Nuestras pizzas</a>
-            <a href="#">Club Pizzettos</a>
-            <a href="#">Tarjeta regalo</a>
-            <a href="#">Familia numerosa</a>
+            <!--<i class="col fa-solid fa-chevron-left"></i>-->
+
+            <?php foreach (productoController::nombreProducto() as $producto): 
+                if ($producto->getIdcategoria() == 1){?>
+                    <div class="swiper-slide">
+                        <img src="Images/<?= $producto->getImagen(); ?>.webp">
+                        <a href="#buy"><?= $producto->getNombre(); ?></a>
+                        <p><?= $producto->getPrecioBase(); ?> €</p>
+                    </div>
+            <?php   
+                }?> 
+            <?php endforeach; ?>
+            <!--<i class="col fa-solid fa-chevron-right"></i>-->
         </div>
-        <div class="footertext">
-            <h4>Atención al cliente</h4>
-            <p>___</p>
-            <a href="#">Contacto</a>
-            <a href="#">Ayuda</a>
-            <a href="#">Política de cookies</a>
-            <a href="#">Política de privacidad</a>
-            <a href="#">Aviso legal</a>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+
+<section id="bottomindex" class="container-fluid m-0">
+    <img class="imagebig" src="Images/webadd (1).png">
+    <div class="bottomindeximages">
+        <div class="images row w-100">
+            <div class="col">
+                <img src="Images/promotional_pizza_427x427.png">
+            </div>
+            <div class="col">
+                <img src="Images/promotional_pizza_427x427.png">
+            </div>
+            <div class="col">
+                <img src="Images/promotional_pizza_427x427.png">
+            </div>
         </div>
-        <div class="footertext">
-            <h4>Promociones</h4>
-            <p>___</p>
-            <a href="#">Super oferttas</a>
-            <a href="#">Legal promociones</a>
-            <a href="#">25% Dto. WEB</a>
+        <div class="images row w-100">
+            <div class="col">
+                <img src="Images/promotional_pizza_427x427.png">
+            </div>
+            <div class="col">
+                <img src="Images/promotional_pizza_427x427.png">
+            </div>
+            <div class="col">
+                <img src="Images/promotional_pizza_427x427.png">
+            </div>
         </div>
-        <div class="footertext">
-            <h4>Comunidad</h4>
-            <p>___</p>
-            <a href="#">Blog</a>
-            <a href="#">Facebook</a>
-            <a href="#">Youtube</a>
-            <a href="#">Instagram</a>
-            <a href="#">Tiktok</a>
-        </div> 
-    </footer>
+    </div>
+</section>
+
+<?php
+include_once footer;
+?>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script >
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    centeredSlides: false,
+    loop: true,
+    grabCursor: true,
+    rightSlide: true,
+    keyboard: {
+    enabled: true,
+    },
+    scrollbar: {
+    el: ".swiper-scrollbar",
+    },
+    navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    },
+    breakpoints: {
+    1562: {
+        slidesPerView: 4,
+    },
+    759: {
+        slidesPerView: 2
+    },
+    }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -1,38 +1,141 @@
 <?php
 
 abstract class Producto{
-    const TYPE_CAMISETA = "1";
-    const TYPE_PANTALONES = "2";
-    protected $talla;
-    protected $precio;
+    protected $idproducto;
     protected $nombre;
+    protected $preciobase;
+    protected $imagen;
+    protected $iddescuento;
+    protected $idcategoria;
 
-    public function __construct($nombre, $talla, $precio) {
-        $this->talla = $talla;
-        $this->precio = $precio;
+    public function __construct($idproducto, $nombre, $preciobase, $imagen, $iddescuento,$idcategoria) {
+        $this->idproducto = $idproducto;
         $this->nombre = $nombre;
+        $this->preciobase = $preciobase;
+        $this->imagen = $imagen;
+        $this->iddescuento = $iddescuento;
+        $this->idcategoria = $idcategoria;
     }
 
-    public function setNombre($nombre){
-        $this->nombre = $nombre;
+
+
+    /**
+     * Get the value of idproducto
+     */ 
+    public function getIdproducto()
+    {
+        return $this->idproducto;
     }
-    public function getNombre(){
+
+    /**
+     * Set the value of idproducto
+     *
+     * @return  self
+     */ 
+    public function setIdproducto($idproducto)
+    {
+        $this->idproducto = $idproducto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombre
+     */ 
+    public function getNombre()
+    {
         return $this->nombre;
     }
 
-    public function setTalla($talla){
-        $this->talla = $talla;
+    /**
+     * Set the value of nombre
+     *
+     * @return  self
+     */ 
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
     }
 
-    public function getTalla(){
-        return $this->talla;
+    /**
+     * Get the value of preciobase
+     */ 
+    public function getPreciobase()
+    {
+        return $this->preciobase;
     }
 
-    public function setPrecio($precio){
-        $this->precio = $precio;
+    /**
+     * Set the value of preciobase
+     *
+     * @return  self
+     */ 
+    public function setPreciobase($preciobase)
+    {
+        $this->preciobase = $preciobase;
+
+        return $this;
     }
 
-    public function getPrecio(){
-        return $this->precio;
+    /**
+     * Get the value of iddescuento
+     */ 
+    public function getIddescuento()
+    {
+        return $this->iddescuento;
+    }
+
+    /**
+     * Set the value of iddescuento
+     *
+     * @return  self
+     */ 
+    public function setIddescuento($iddescuento)
+    {
+        $this->iddescuento = $iddescuento;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idcategoria
+     */ 
+    public function getIdcategoria()
+    {
+        return $this->idcategoria;
+    }
+
+    /**
+     * Set the value of idcategoria
+     *
+     * @return  self
+     */ 
+    public function setIdcategoria($idcategoria)
+    {
+        $this->idcategoria = $idcategoria;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imagen
+     */ 
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Set the value of imagen
+     *
+     * @return  self
+     */ 
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
     }
 }

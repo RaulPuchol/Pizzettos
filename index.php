@@ -1,4 +1,5 @@
 <?php
+include_once "controllers/loginController.php";
 include_once "controllers/productoController.php";
 include_once "config/parameters.php";
 
@@ -6,6 +7,7 @@ if (!isset($_GET['controller'])) {
     echo "No existe en la url Controller";
     header("Location:".url."?controller=producto");
 } else {
+    
     //Establece el nombre del controlador
     $nombre_controller = $_GET["controller"]."Controller";
     if (class_exists($nombre_controller)) {
@@ -22,7 +24,9 @@ if (!isset($_GET['controller'])) {
 
         //ejecuta action en el controlador
         $controller -> $action();
+        
     } else {
         echo "No existe el Controller ".$nombre_controller;
     }
+    
 }

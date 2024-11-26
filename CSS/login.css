@@ -1,0 +1,136 @@
+* {
+    margin: 0%;
+    padding: 0;  /* El !important asegura que se aplique */
+    --bs-gutter-x: 0 !important;
+    background-color: #001C85;
+    font-family: "Nunito";
+}
+
+p {
+    margin-bottom: 0 !important
+
+}
+
+header {
+    position:sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0px 0px 2px 0px;
+}
+
+.backgroundlogin {
+    background-color: #001C85;
+    width: 100%;
+}
+
+#headlogin {
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 180px;
+}
+
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 3%;
+}
+
+#login .buttonslogin {
+    margin-bottom: 1%;
+    display: flex;
+    gap: 8%;
+}
+
+#login .buttonslogin button:nth-child(1){
+    background-color: white;
+    border: 2px solid white;
+    color:#001C85;
+    border-radius: 100px;
+    width: 189px;
+    height: 38px;
+    font-weight: bold;
+}
+#login .buttonslogin button:nth-child(2){
+    background-color: #001C85;
+    border: white solid 1px;
+    color: white;
+    transition: 0.2s;
+    border-radius: 100px;
+    border-radius: 100px;
+    width: 189px;
+    height: 38px;
+    font-weight: bold;
+}
+#login .buttonslogin button:nth-child(2):hover{
+    background-color: white;
+    border: 2px solid white;
+    color:#001C85;
+    transition: 0.2s;
+}
+#login .logininputs {
+    width: 25%;
+}
+
+#login .logininputs form{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#login .logininputs form label{
+    color: white;
+    margin-bottom: 1%;
+}
+
+#login .logininputs form input{
+    background-color: #E8E4FC;
+    border-radius: 100px;
+    height: 40px;
+    margin-bottom: 5%;
+    border: none;
+    padding-left: 10px;
+}
+#login .logininputs form input::placeholder{
+    color: #001C85;
+}
+
+#login .logininputs form button{
+    background-color: #FF6474;
+    border-radius: 100px;
+    height: 40px;
+    margin-bottom: 5%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+}
+#login .logininputs form button:hover{
+    background-color: #80323A;
+    transition: 0.2s;
+}
+
+#login .logininputs form a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+}
+#login .logininputs form a:hover{
+
+    text-decoration: underline;
+
+}
+
+
+
