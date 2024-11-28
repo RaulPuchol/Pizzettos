@@ -3,8 +3,12 @@ include_once("models/Producto.php");
 
 class Productos extends Producto {
 
-    public function __construct($idproducto = null, $nombre = null, $preciobase = null, $imagen = null, $iddescuento = null, $idcategoria = null) {
+    public function __construct($idproducto, $nombre, $preciobase , $imagen , $iddescuento, $idcategoria ) {
         parent::__construct($idproducto, $nombre, $preciobase, $imagen, $iddescuento, $idcategoria);
+    }
+
+    public function getIdproducto() {
+        return $this->idproducto;
     }
 
     public function getNombre() {

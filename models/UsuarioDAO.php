@@ -2,26 +2,25 @@
 include_once("config/dataBase.php");
 
 class UsuarioDAO {
-    public static function getDatos($email,$password) {
+    public static function iniciarsesion($email) {
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM Usuario WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        $result = $stmt->get_result();
 
-        if ($result && $result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-    
-            // Verificar la contraseña
-            if (password_verify($password, $user['password'])) {
-                return $user; // Retorna el usuario si la contraseña es correcta
-            } else {
-                return null; // Contraseña incorrecta
-            }
-        } else {
-            return null; // Usuario no encontrado
-        }
+        return $result = $stmt->get_result();
+    }
+
+    public static function insertarUsuario($email, $usuario, $passwd) {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("INSERT INTO Usuario (email, usuario, passwd) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $email, $usuario, $passwd);
+        $stmt->execute();
+
+        $stmt->close();
+        header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
     }
     
 }

@@ -10,7 +10,6 @@ if (isset($_SESSION['email'])) {
 // Si no hay sesión, continúa mostrando la página de inicio de sesión
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,8 +29,8 @@ if (isset($_SESSION['email'])) {
 </head>
 <body>
     <header>
-        <div class="container-fluid m-0 w-100 backgroundlogin">
-            <div id="headlogin" class="row">
+        <div class="container-fluid m-0 w-100 backgroundregister">
+            <div id="headregister" class="row">
                 <div class="col logo">
                 <a href="?controller=producto"><img src="Images/Logo.png"></a>
                 </div>
@@ -39,21 +38,24 @@ if (isset($_SESSION['email'])) {
         </div>
     </header>
 
-    <section id="login">
-        <div class="buttonslogin">
-        <a><button>Ya tengo cuenta</button></a>
-        <a href="?controller=login&action=register"><button>Aún no tengo cuenta</button></a>
+    <section id="register">
+        <div class="buttonsregister">
+        <a href="?controller=login&action=login"><button>Ya tengo cuenta</button></a>
+        <a><button>Aún no tengo cuenta</button></a>
         </div>
-        <div class="logininputs">
-            <form action="?controller=login&action=getAccount" method="post">
+        <div class="registerinputs">
+            <form action="?controller=login&action=createAccount" method="post">
                 <label for="email"><b>Correo electrónico:*</b></label>
                 <input type="mail" placeholder="Escribe tu correo electrónico" name="email" required>
+
+                <label for="nombre"><b>Nombre de usuario:*</b></label>
+                <input type="text" placeholder="Escribe tu nombre de usuario" name="nombre" required>
 
                 <label for="passwd"><b>Contraseña:*</b></label>
                 <input type="password" placeholder="Escribe tu contraseña" name="passwd" required>
 
-                <button type="submit">Entrar a mi cuenta</button>
-                <a href="#">Restablecer contraseña</a>
+                <button type="submit">Crear mi cuenta</button>
+                <!--<a href="#">Restablecer contraseña</a>-->
             </form>
         </div>
     </section>

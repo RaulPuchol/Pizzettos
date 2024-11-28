@@ -1,3 +1,8 @@
+<?php 
+session_start();
+$email = $_SESSION['email'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +25,31 @@
 ?>
 
 
+
+
 <section id="paginacion">
     <span><a href="?controller=producto">INICIO</a></span> <span>/</span> <span><a>PIZZAS Y MÁS</a></span>
     <h4>PIZZAS Y MÁS</h4>
     <p>En Pizzettos nos hemos especializado en enriquecer y potenciar las Pizzas a través de nuestros restaurantes que despierten el apetito. Además, de contar una gama de pizzas / entrantes includo al gusto que desea. Para ello, hemos preparado una amplísima gama de platos para toda la famila que se adaptan a diferentes personas y niños .</p>
 
 </section>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Mi cesta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="carrito">
+
+        </div>
+        <div class="buybuttons">
+
+        </div>
+    </div>
+
+</div>
 
 <section id="productoscontainer" class="container-fluid m-0">
     
@@ -77,7 +101,24 @@
                 <img src="Images/<?= $producto->getImagen(); ?>.webp">
                 <a href="#buy"><?= $producto->getNombre(); ?></a>
                 <p><?= $producto->getPrecioBase(); ?> €</p>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <?= $producto->getIdproducto(); ?>
+                
+                <form action="?controller=producto&action=meterAlCarrito" method="post">
+                    <input type="hidden" name="email" value="<?php 
+                    
+                    if (!isset($email)){
+                        header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
+                    } else {
+                        echo htmlspecialchars($email); 
+                    }
+                    
+                    
+                    ?>">
+                    <input type="hidden" name="idproducto" value="<?= $producto->getIdproducto()?>">
+                    <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                </form>
+
+                
             </div> 
         <?php endforeach; ?>
 

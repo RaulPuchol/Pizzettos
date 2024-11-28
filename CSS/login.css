@@ -52,7 +52,7 @@ header {
     gap: 8%;
 }
 
-#login .buttonslogin button:nth-child(1){
+#login .buttonslogin a:nth-child(1) button{
     background-color: white;
     border: 2px solid white;
     color:#001C85;
@@ -61,7 +61,7 @@ header {
     height: 38px;
     font-weight: bold;
 }
-#login .buttonslogin button:nth-child(2){
+#login .buttonslogin a:nth-child(2) button{
     background-color: #001C85;
     border: white solid 1px;
     color: white;
@@ -72,7 +72,7 @@ header {
     height: 38px;
     font-weight: bold;
 }
-#login .buttonslogin button:nth-child(2):hover{
+#login .buttonslogin a:nth-child(2) button:hover{
     background-color: white;
     border: 2px solid white;
     color:#001C85;
@@ -133,4 +133,113 @@ header {
 }
 
 
+
+
+
+
+
+
+
+.backgroundregister {
+    background-color: #001C85;
+    width: 100%;
+}
+
+#headregister {
+    width: 100%;
+}
+
+#register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 3%;
+}
+
+#register .buttonsregister {
+    margin-bottom: 1%;
+    display: flex;
+    gap: 8%;
+}
+
+#register .buttonsregister a:nth-child(2) button{
+    background-color: white;
+    border: 2px solid white;
+    color:#001C85;
+    border-radius: 100px;
+    width: 189px;
+    height: 38px;
+    font-weight: bold;
+}
+#register .buttonsregister a:nth-child(1) button{
+    background-color: #001C85;
+    border: white solid 1px;
+    color: white;
+    transition: 0.2s;
+    border-radius: 100px;
+    border-radius: 100px;
+    width: 189px;
+    height: 38px;
+    font-weight: bold;
+}
+#register .buttonsregister a:nth-child(1) button:hover{
+    background-color: white;
+    border: 2px solid white;
+    color:#001C85;
+    transition: 0.2s;
+}
+#register .registerinputs {
+    width: 25%;
+}
+
+#register .registerinputs form{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#register .registerinputs form label{
+    color: white;
+    margin-bottom: 1%;
+}
+
+#register .registerinputs form input{
+    background-color: #E8E4FC;
+    border-radius: 100px;
+    height: 40px;
+    margin-bottom: 5%;
+    border: none;
+    padding-left: 10px;
+}
+#register .registerinputs form input::placeholder{
+    color: #001C85;
+}
+
+#register .registerinputs form button{
+    background-color: #FF6474;
+    border-radius: 100px;
+    height: 40px;
+    margin-bottom: 5%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+}
+#register .registerinputs form button:hover{
+    background-color: #80323A;
+    transition: 0.2s;
+}
+
+#register .registerinputs form a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+}
+#register .registerinputs form a:hover{
+
+    text-decoration: underline;
+
+}
 

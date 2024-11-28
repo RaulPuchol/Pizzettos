@@ -14,8 +14,11 @@ class productoController{
     }
 
 
-    public function newProducto() {
-        echo"Crear nuevo producto";
+    public function meterAlCarrito() {
+        $emailCarrito = $_POST['email'];
+        $idproducto = $_POST['idproducto'];
+
+        productoDAO::insertCarrito($emailCarrito, $idproducto, 1);
     }
 
     public function crear() {
