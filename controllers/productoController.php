@@ -21,6 +21,14 @@ class productoController{
         productoDAO::insertCarrito($emailCarrito, $idproducto, 1);
     }
 
+    public function carrito($emailCarrito) {
+        return productoDAO::getCarrito($emailCarrito);
+    }
+
+    public function getProductosCarrito($email) {
+        return productoDAO::getProductosDelCarrito($email);
+    }
+
     public function crear() {
         /*
         $producto = new CamisetaDAO();

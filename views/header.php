@@ -25,7 +25,7 @@
                         <a href="?controller=login&action=login"><i class="fa-regular fa-user"></i><p class="m-0 texto ">PERFIL</p></a>
                     </div>
                     <div>
-                        <a href="#menu"><i class="fa-solid fa-bag-shopping"></i><p class="m-0 texto ">MI CESTA</p></a>
+                    <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bag-shopping"></i><p class="m-0 texto ">MI CESTA</p></button>
                     </div>
                 </div>
             </div>

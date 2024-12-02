@@ -460,3 +460,32 @@ footer div{
     font-size: 48px;
     font-weight: bolder;
 }
+
+/*---------------------------------- CARRITO -------------------------------------*/
+
+.offcanvas { 
+    width: 35% !important;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.offcanvas-body {
+    max-height: 66vh; /* Limita la altura */
+    overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+.carrito {
+    display: flex;
+    flex-direction: column;
+    width:auto;
+}
+
+.carrito .productoCarrito {
+    border: #56565648 solid 1px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.carrito .productoCarrito img {
+    width: 80px;
+    height: 80px;
+}

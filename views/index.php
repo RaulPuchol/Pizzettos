@@ -1,6 +1,5 @@
 <?php
     session_start();
-    echo $_SESSION['email']
 ?>
 
 <!DOCTYPE html>
