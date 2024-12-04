@@ -1,14 +1,3 @@
-<?php 
-session_start();
-if (!isset($_SESSION['email'])){
-    $email = "none";
-} else {
-    $email = $_SESSION['email'];
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,33 +28,6 @@ if (!isset($_SESSION['email'])){
     <p>En Pizzettos nos hemos especializado en enriquecer y potenciar las Pizzas a través de nuestros restaurantes que despierten el apetito. Además, de contar una gama de pizzas / entrantes includo al gusto que desea. Para ello, hemos preparado una amplísima gama de platos para toda la famila que se adaptan a diferentes personas y niños .</p>
 
 </section>
-
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Mi cesta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body ">
-        <div class="cajacarrito">
-            <div class="carrito">
-                <?php foreach (productoController::getProductosCarrito($email) as $producto): ?>
-                    <div class="productoCarrito">
-                        <img src="Images/<?= $producto->getImagen(); ?>.webp">
-                        <p><a href="#buy"><?= $producto->getNombre(); ?></a><p><?= $producto->cantidad?></p></p>
-                        <p><?= $producto->getPrecioBase() * $producto->cantidad; ?> €</p>
-                        
-                    </div> 
-                <?php endforeach; ?>
-
-            </div>
-        </div>
-        <div class="buybuttons">
-
-        </div>
-    </div>
-
-</div>
 
 <section id="productoscontainer" class="container-fluid m-0">
     
@@ -123,7 +85,7 @@ if (!isset($_SESSION['email'])){
                     echo htmlspecialchars($email);
                     ?>">
                     <input type="hidden" name="idproducto" value="<?= $producto->getIdproducto()?>">
-                    <button class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <button type="submit"><i class="fa-solid fa-cart-shopping"></i></button>
                 </form>
 
                 

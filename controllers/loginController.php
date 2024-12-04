@@ -8,6 +8,9 @@ class loginController{
     public function register(){
         include_once("views/register.php");
     }
+    public function profile(){
+        include_once("views/profile.php");
+    }
 
     public function createAccount(){
         $email = $_POST['email'];

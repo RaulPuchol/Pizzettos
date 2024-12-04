@@ -2,9 +2,9 @@
 session_start(); // Asegúrate de iniciar la sesión al principio
 
 // Verifica si ya hay una sesión iniciada
-if (isset($_SESSION['email']) && $_SESSION['email'] != "none") {
+if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
     // Si la sesión está iniciada, redirige a otra página
-    header("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=profile");
+    header("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
 }
 
 // Si no hay sesión, continúa mostrando la página de inicio de sesión
@@ -30,33 +30,19 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "none") {
 </head>
 <body>
     <header>
+        <div class="container-fluid m-0 w-100 backgroundprofile">
         
-        <div class="container-fluid m-0 w-100 backgroundlogin">
-            <div id="headlogin" class="row">
-                <div class="col logo">
+            <div id="headprofile" class="row">
+            
+                <div class="col logoprofile">
+                <a href="?controller=producto"><button><- Volver a la tienda</button></a>
                 <a href="?controller=producto"><img src="Images/Logo.png"></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="login">
-        <div class="buttonslogin">
-        <a><button>Ya tengo cuenta</button></a>
-        <a href="?controller=login&action=register"><button>Aún no tengo cuenta</button></a>
-        </div>
-        <div class="logininputs">
-            <form action="?controller=login&action=getAccount" method="post">
-                <label for="email"><b>Correo electrónico:*</b></label>
-                <input type="mail" placeholder="Escribe tu correo electrónico" name="email" required>
-
-                <label for="passwd"><b>Contraseña:*</b></label>
-                <input type="password" placeholder="Escribe tu contraseña" name="passwd" required>
-
-                <button type="submit">Entrar a mi cuenta</button>
-                <a href="#">Restablecer contraseña</a>
-            </form>
-        </div>
+    <section id="profile">
     </section>
 
 

@@ -30,35 +30,32 @@ class ProductoDAO {
     }
 
     public static function insertCarrito($emailCarrito, $idproducto, $cantidad) {
-        if ($emailCarrito === "none") {
-            header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
-        } else {
-            $con = DataBase::connect();
-            //Comprueba si ya existe en la base de dato
-            $stmt = $stmt = $con->prepare("SELECT * FROM Carrito WHERE emailCarrito = ? AND idproducto = ?");
-            $stmt->bind_param("si", $emailCarrito, $idproducto);
+        $con = DataBase::connect();
+        //Comprueba si ya existe en la base de dato
+        $stmt = $stmt = $con->prepare("SELECT * FROM Carrito WHERE emailCarrito = ? AND idproducto = ?");
+        $stmt->bind_param("si", $emailCarrito, $idproducto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+
+        if ($result->num_rows > 0) {
+            // Si ya existe, actualiza sumando la cantidad
+            $row = $result->fetch_assoc();
+            $nuevaCantidad = $row['Cantidad'] + $cantidad;
+    
+            $stmt = $con->prepare("UPDATE Carrito SET cantidad = ? WHERE emailCarrito = ? AND idproducto = ?");
+            $stmt->bind_param("isi", $nuevaCantidad, $emailCarrito, $idproducto);
             $stmt->execute();
-            $result = $stmt->get_result();
-
-
-            if ($result->num_rows > 0) {
-                // Si ya existe, actualiza sumando la cantidad
-                $row = $result->fetch_assoc();
-                $nuevaCantidad = $row['Cantidad'] + $cantidad;
-        
-                $stmt = $con->prepare("UPDATE Carrito SET cantidad = ? WHERE emailCarrito = ? AND idproducto = ?");
-                $stmt->bind_param("isi", $nuevaCantidad, $emailCarrito, $idproducto);
-                $stmt->execute();
-            } else {
-                // Si no existe, inserta el nuevo registro
-                $stmt = $con->prepare("INSERT INTO Carrito (emailCarrito, idproducto, cantidad) VALUES (?, ?, ?)");
-                $stmt->bind_param("sii", $emailCarrito, $idproducto, $cantidad);
-                $stmt->execute();
-            }
-        
-            $stmt->close();
-            $con->close();
+        } else {
+            // Si no existe, inserta el nuevo registro
+            $stmt = $con->prepare("INSERT INTO Carrito (emailCarrito, idproducto, cantidad) VALUES (?, ?, ?)");
+            $stmt->bind_param("sii", $emailCarrito, $idproducto, $cantidad);
+            $stmt->execute();
         }
+    
+        $stmt->close();
+        $con->close();
+        
         
     }
 
@@ -66,7 +63,7 @@ class ProductoDAO {
         $con = DataBase::connect();
     
         $stmt = $con->prepare("
-            SELECT p.IDproducto, p.Nombre, p.PrecioBase, p.Imagen, p.IDdescuento, p.IDcategoria, c.Cantidad
+            SELECT p.IDproducto, p.Nombre, p.PrecioBase, p.Imagen, p.IDdescuento, p.IDcategoria, c.Cantidad, c.ID
             FROM Carrito c
             JOIN Producto p ON c.IDproducto = p.IDproducto
             WHERE c.emailCarrito = ?
@@ -86,11 +83,22 @@ class ProductoDAO {
                 $row['IDcategoria']
             );
             $producto->cantidad = $row['Cantidad'];
-            $productos[] = $producto;
+            $producto->IDcarrito = $row['ID'];
+            $productos[] = $producto; 
         }
     
         $stmt->close();
         $con->close();
         return $productos;
+    }
+
+    public static function deleteProductoDelCarrito($idcarrito) {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("DELETE FROM Carrito WHERE ID=?");
+        $stmt->bind_param("i", $idcarrito);
+        $stmt->execute();
+        $stmt->close();
+        
     }
 }

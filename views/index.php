@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,6 +19,7 @@
 <?php
 include_once header;
 ?>
+
 <div id="carouselExampleAutoplaying " class="carousel slide carrusel" data-bs-ride="carousel">
     <div class="carousel-inner imagenes">
         <div class="carousel-item active">

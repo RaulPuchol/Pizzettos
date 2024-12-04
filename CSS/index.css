@@ -461,16 +461,22 @@ footer div{
     font-weight: bolder;
 }
 
+.producto form button {
+    border: none;
+}
+
 /*---------------------------------- CARRITO -------------------------------------*/
 
 .offcanvas { 
     width: 35% !important;
     border-radius: 5px 0px 0px 5px;
+    font-family: 'Roboto';
 }
 
 .offcanvas-body {
-    max-height: 66vh; /* Limita la altura */
+    max-height: 100vh; /* Limita la altura */
     overflow-y: auto; /* Habilita el scroll vertical */
+    margin-bottom: 5%;
 }
 
 .carrito {
@@ -484,8 +490,43 @@ footer div{
     margin-bottom: 5px;
     border-radius: 5px;
 }
-
 .carrito .productoCarrito img {
     width: 80px;
     height: 80px;
+}
+
+
+
+/*---------------------------------- BOTON CARRITO -------------------------------------*/
+
+.buysubtotal {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 22px;
+}
+
+.buysubtotal p:nth-child(2) {
+    color: #273C87;
+    
+}
+
+.buybutton {
+    width: 33vw;
+    height: 20vh; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+
+}
+
+.buybutton button {
+    width: 100%;
+    border-radius: 100px;
+    height: 40px;
+    background-color: #273C87;
+    color: white;
+    border: none;
+    
 }

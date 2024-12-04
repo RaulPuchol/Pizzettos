@@ -19,6 +19,8 @@ header {
     box-shadow: 0px 0px 2px 0px;
 }
 
+/*---------------------------------- LOGIN -------------------------------------*/
+
 .backgroundlogin {
     background-color: #001C85;
     width: 100%;
@@ -135,7 +137,7 @@ header {
 
 
 
-
+/*---------------------------------- REGISTER -------------------------------------*/
 
 
 
@@ -228,7 +230,7 @@ header {
 }
 #register .registerinputs form button:hover{
     background-color: #80323A;
-    transition: 0.2s;
+    transition: 0.2s;                                       
 }
 
 #register .registerinputs form a{
@@ -243,3 +245,31 @@ header {
 
 }
 
+
+/*---------------------------------- PROFILE -------------------------------------*/
+
+.backgroundprofile {
+    background-color: #001C85;
+    width: 100%;
+    
+}
+
+#headprofile {
+    width: 100%;
+}
+
+
+.logoprofile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8%;
+}
+
+.logoprofile a{
+
+}
+
+.logoprofile img {
+    width: 180px;
+}

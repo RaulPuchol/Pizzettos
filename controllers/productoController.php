@@ -18,15 +18,30 @@ class productoController{
         $emailCarrito = $_POST['email'];
         $idproducto = $_POST['idproducto'];
 
-        productoDAO::insertCarrito($emailCarrito, $idproducto, 1);
-    }
+        if ($emailCarrito === "none"){
+            header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
+        } else {
+            productoDAO::insertCarrito($emailCarrito, $idproducto, 1);
+            header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=pizzas");
 
-    public function carrito($emailCarrito) {
-        return productoDAO::getCarrito($emailCarrito);
+        }
+
+        
     }
 
     public function getProductosCarrito($email) {
+
+        
         return productoDAO::getProductosDelCarrito($email);
+        
+        
+    }
+
+    public function deletefromCarrito() {
+        $idcarrito = $_POST['idcarrito'];
+        $url = $_POST['currentUrl'];
+        productoDAO::deleteProductoDelCarrito($idcarrito);
+        header ("Location: ". $url);
     }
 
     public function crear() {
