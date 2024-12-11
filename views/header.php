@@ -1,13 +1,3 @@
-<?php 
-session_start();
-if (!isset($_SESSION['email'])){
-    $email = "none";
-} else {
-    $email = $_SESSION['email'];
-}
-
-
-?>
 <head><link rel="stylesheet" href="CSS/index.css"></head>
 <div id="ad">
         <p class="m-0">CONTACTA EN PEDIDOS@PIZZETTOS.ES SI TIENES ALGÚN PROBLEMA</p>
@@ -27,7 +17,7 @@ if (!isset($_SESSION['email'])){
                         <a href="#menu"><i class="fa-solid fa-pizza-slice"></i><p class="m-0 texto">EL CLUB</p></a>
                     </div>
                     <div>
-                        <a href="#store"><i class="fa-solid fa-store"></i><p class="m-0 texto ">TIENDA</p></a>
+                        <a href="?controller=producto&action=pizzas"><i class="fa-solid fa-store"></i><p class="m-0 texto ">TIENDA</p></a>
                     </div>
                     <div>
                         <a href="#menu"><i class="fa-regular fa-heart"></i><p class="m-0 texto ">FAVORITOS</p></a>
@@ -141,7 +131,7 @@ if (!isset($_SESSION['email'])){
                 <p><?=$subtotal?> €</p>
             
             </div>
-            <button>FINALIZAR COMPRA</button>
+                <a href='?controller=producto&action=comprar'><button>FINALIZAR COMPRA</button></a>
         </div>
     </div>
 </div>

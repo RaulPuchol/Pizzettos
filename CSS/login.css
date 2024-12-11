@@ -260,16 +260,96 @@ header {
 
 
 .logoprofile {
-    display: flex;
+    display: grid;
+    grid-template-columns: 33% auto 33%;
     align-items: center;
-    justify-content: center;
-    margin-right: 8%;
+    
 }
 
 .logoprofile a{
+display: flex;
+justify-content: center;
+text-decoration: none;
+}
 
+.logoprofile a button {
+    background-color: white;
+    border: none;
+    color: #001C85;
+    padding: 6px 15px;
+    border-radius: 25px;
+    font-weight: bolder;
+}
+.logoprofile a i {
+    background-color: white;
 }
 
 .logoprofile img {
     width: 180px;
 }
+#profile h1{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1%;
+}
+
+
+#profile .logout{
+    color: white;
+    justify-content: center;
+    display: flex;
+    margin-top: 2.5%;
+    text-decoration: none;
+}
+
+#profile .logout:hover {
+    text-decoration: underline;
+}
+
+.profilebuttons {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: center;
+}
+
+.profilebuttons div {
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+    
+}
+
+.profilebuttons div a {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.profilebuttons div a button  {
+    padding: 3% 0%;
+    width: 96%;
+    border-radius: 10px;
+    border: none;
+    background-color: #274FE1;
+    color: white;
+    
+}
+
+.profilebuttons div a button:hover  {
+    text-decoration: underline;
+}
+
+.profilebuttons div button i, .profilebuttons div button h4, .profilebuttons div button p {
+    background-color: #274FE1;
+    margin: 0;
+}
+.profilebuttons div button h4 {
+    margin: 2% 0% 0% 0%;
+}
+.profilebuttons div button p {
+    font-size: 12px;
+}
+.profilebuttons i {
+    font-size: 3vw;
+} 

@@ -101,4 +101,20 @@ class ProductoDAO {
         $stmt->close();
         
     }
+
+    public static function nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento) {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("INSERT INTO Pedido (emailusuario, Fechapedido, Cantidad, Precio, IDdescuento) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssidi", $emailusuario, $fechapedido, $cantidad, $precio, $iddescuento);
+        $stmt->execute();
+
+        $stmt = $con->prepare("DELETE FROM Carrito WHERE emailCarrito=?");
+        $stmt->bind_param("s", $emailusuario);
+        $stmt->execute();
+
+        $stmt->close();
+        $con->close();
+        
+    }
 }

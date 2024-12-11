@@ -397,7 +397,7 @@ footer div{
     flex: 0 0 20%;
 }
 
-.accordion-item {
+.productosleft .accordion-item {
     display: flex;
     flex-direction: column;
     width: 75%;
@@ -405,7 +405,7 @@ footer div{
     margin-bottom: 2%;
 }
 
-.accordion-button p{
+.productosleft .accordion-button p{
     color:#001C85;
     font-weight: bold;
 }
@@ -529,4 +529,173 @@ footer div{
     color: white;
     border: none;
     
+}
+
+/*---------------------------------- COMPRAR -------------------------------------*/
+
+#comprar {
+    display: grid;
+    grid-template-columns: auto 50% 25% auto;
+    font-family: 'Roboto';
+}
+
+.comprarleft .accordion-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-top: 1px solid #001C85;
+    border-radius: none;
+   
+}
+
+.comprarleft .accordion-item:first-child {
+    border-top: white;
+}
+
+.comprarleft .accordion-button p{
+    color:#001C85;
+    font-weight: bold;
+}
+
+.comprarright {
+    /*ayuda el sticky no funciona*/
+}
+.comprarright div {
+    
+    background-color: #F8F9FD;
+    padding: 5%;
+}
+
+.cajacarrito {
+   
+    max-height: 30vh;/* Limita la altura */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    margin-bottom: 5%;
+    
+}
+
+.carritocompra {
+    display: flex;
+    flex-direction: column;
+    width:auto;
+}
+
+.carritocompra .productoCarrito {
+    border: #56565648 solid 1px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.carritocompra .productoCarrito img {
+    width: 80px;
+    height: 80px;
+}
+
+.searchercarrito {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.searchercarrito div {
+    width: 100%;
+}
+
+.searchercarrito div input {
+    border-radius: 50px;
+    border: 1px solid gray;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+    width: 75%;
+}
+
+.searchercarrito div button {
+    border-radius:  50px;
+    border: 0px;
+    padding: 1.2% 8%;
+    margin-left: -10%;
+    
+    background-color: #2D337E;
+    color: white;
+}
+
+.searchercarrito label {
+    color:#001C85;
+    
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15%;
+    font-size: large;
+    color: #001C85;
+    font-weight: bold;
+}
+
+
+#panelsStayOpen-collapseOne .accordion-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#panelsStayOpen-collapseOne .accordion-body p {
+   color: #001C85;
+}
+
+#panelsStayOpen-collapseOne .accordion-body a {
+    color: #565656;
+    text-decoration: none;
+}
+
+#panelsStayOpen-collapseTwo .accordion-body {
+    display: grid;
+    grid-template-columns: auto auto ;
+}
+#panelsStayOpen-collapseThree .accordion-body form .input{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    padding: 2% 0% 2% 2%;
+    background-color: #F8F9FD;
+    color: #001C85;
+}
+
+#panelsStayOpen-collapseThree .accordion-body form .input:nth-child(2){
+    margin-top: 2%;
+    color: #C4281A;
+}
+
+#panelsStayOpen-collapseFour .accordion-body form .input2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2% 0% 2% 2%;
+    background-color: #F8F9FD;
+    
+    
+}
+#panelsStayOpen-collapseFour .accordion-body form .input2 div{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    width: 100%;
+}
+
+#panelsStayOpen-collapseFour .accordion-body form .input2 div:nth-child(2){
+    color: #0c8f28;
+    justify-content: end;
+    font-size: 30px;
+    margin-right: 2%;
+}
+
+#panelsStayOpen-collapseFour .accordion-body form .input2 div a{
+    transition: 0.3s;
+    text-decoration: none;
+    color: #565656;
+}
+
+#panelsStayOpen-collapseFour .accordion-body form .input2 div a:hover{
+    color: #0c8f28;
+    transition: 0.3s;
 }

@@ -44,6 +44,12 @@ class loginController{
             return null; // Usuario no encontrado
         }
     }
+
+    public function logout(){
+        session_start();
+        session_destroy();
+        header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=index");
+    }
 }
 
 ?>

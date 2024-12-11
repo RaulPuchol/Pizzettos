@@ -8,10 +8,15 @@ class productoController{
     public function pizzas(){
         include_once("views/pizzas.php");
     }
+    public function comprar(){
+        include_once("views/comprar.php");
+    }
 
     public function nombreProducto() {
         return ProductoDAO::getAll();
     }
+
+    
 
 
     public function meterAlCarrito() {
@@ -44,14 +49,13 @@ class productoController{
         header ("Location: ". $url);
     }
 
-    public function crear() {
-        /*
-        $producto = new CamisetaDAO();
-        $producto = $producto->getAll();
-        $producto = $producto->store($producto);
-        */
+    public function comprarproductos() {
+        $emailusuario = $_POST['email'];
+        $fechapedido = date("Y-m-d H:i:s");
+        $cantidad = $_POST['cantidad'];
+        $precio = $_POST['precio'];
+        $iddescuento = $_POST['descuento'];
 
-        include_once("views/productos/create.php");
-        
+        productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento);
     }
 }

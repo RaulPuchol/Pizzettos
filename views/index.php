@@ -1,3 +1,5 @@
+<?php include_once "script/session.php"?>
+
 <!DOCTYPE html>
 <html lang="es">
 
