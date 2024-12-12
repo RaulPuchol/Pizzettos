@@ -114,32 +114,31 @@ include_once header;
                 </button>
                 </h2>
                 <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                <form action="?controller=producto&action=comprarproductos" method="post">
-                    <div class="input2">
-                        <div>
-                        <?php $cantidad = 0;?>
-                        <?php $precio = 0;?>
-                        <?php foreach (productoController::getProductosCarrito($email) as $producto){ ?>
-                            <?php $precio += $producto->getPrecioBase() * $producto->cantidad; ?>
-                            <?php $cantidad += $producto->cantidad; ?>
-                        <?php } ?>
-                            <input type="hidden" name="email" value="<?= $email?>">
-                            <input type="hidden" name="precio" value="<?= $precio?>">
-                            <input type="hidden" name="cantidad" value="<?= $cantidad?>">
-                            <input type="hidden" name="descuento" value="1">
-                            <button type="submit">Comprar en efectivo</button>
-                        </div>
-                        <div>
-                        <i class="fa-solid fa-money-bill"></i>
-                        </div>
-                        
-                    </div>       
-                </form>
+                    <div class="accordion-body">
+                        <form action="?controller=producto&action=comprarproductos" method="post">
+                            <div class="input2">
+                                <div>
+                                <?php $cantidad = 0;
+                                $precio = 0;
+                                foreach (productoController::getProductosCarrito($email) as $producto){ 
+                                        $precio += $producto->getPrecioBase() * $producto->cantidad; 
+                                        $cantidad += $producto->cantidad; ?>
+                            <?php } ?>
+                                    
+                                    <input type="hidden" name="email" value="<?= $email?>">
+                                    <input type="hidden" name="precio" value="<?= $precio?>">
+                                    <input type="hidden" name="cantidad" value="<?= $cantidad?>">
+                                    <input type="hidden" name="descuento" value="1">
+                                    <button type="submit">Comprar en efectivo</button>
+                                </div>
+                                <div>
+                                <i class="fa-solid fa-money-bill"></i>
+                                </div>     
+                            </div>       
+                        </form>
+                    </div>
                 </div>
-                </div>
-            </div>
-            
+            </div> 
         </div>
         <div class="comprarright">
             <div>
@@ -174,10 +173,10 @@ include_once header;
                 <div class="total">
                     <p>TOTAL:</p>
 
-                    <?php $total = 0;?>
-                    <?php foreach (productoController::getProductosCarrito($email) as $producto){ ?>
-                        <?php $total += $producto->getPrecioBase() * $producto->cantidad; ?>
-                    <?php } ?>
+                    <?php $total = 0;
+                    foreach (productoController::getProductosCarrito($email) as $producto){
+                        $total += $producto->getPrecioBase() * $producto->cantidad;
+                     } ?>
                     <p><?=$total?> €</p>
                 </div>
             </div>

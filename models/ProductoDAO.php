@@ -109,6 +109,22 @@ class ProductoDAO {
         $stmt->bind_param("ssidi", $emailusuario, $fechapedido, $cantidad, $precio, $iddescuento);
         $stmt->execute();
 
+         // Obtener el ID del último Pedido insertado
+        $IDpedido = $con->insert_id;
+        $precio1 = 0;
+        $cantidad = 0;
+        $idproducto = 0;
+        // Insertar en la tabla haciendo un bucle insertando los productos en cada row
+        foreach (ProductoDAO::getProductosDelCarrito($emailusuario) as $producto){ 
+            $precio1 += $producto->getPrecioBase() * $producto->cantidad; 
+            $cantidad += $producto->cantidad;
+            $idproducto = $producto->getIdproducto();
+            $stmt = $con->prepare("INSERT INTO Pedido_Producto VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("diii", $precio1, $cantidad, $IDpedido, $idproducto);
+            $stmt->execute();
+        }
+        
+
         $stmt = $con->prepare("DELETE FROM Carrito WHERE emailCarrito=?");
         $stmt->bind_param("s", $emailusuario);
         $stmt->execute();
@@ -116,5 +132,9 @@ class ProductoDAO {
         $stmt->close();
         $con->close();
         
+    }
+
+    public static function insert_pedidoProducto() {
+
     }
 }
