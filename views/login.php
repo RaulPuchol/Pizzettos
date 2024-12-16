@@ -7,6 +7,8 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "none") {
     header("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=profile");
 }
 
+
+
 // Si no hay sesión, continúa mostrando la página de inicio de sesión
 ?>
 
@@ -46,15 +48,27 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "none") {
         <a href="?controller=login&action=register"><button>Aún no tengo cuenta</button></a>
         </div>
         <div class="logininputs">
-            <form action="?controller=login&action=getAccount" method="post">
+            <form action="?controller=login&action=login" method="post">
+                <?php
+                    if(isset($_POST['email'])) {
+                        $session = new loginController();
+                        $session->getAccount($_POST['email'], $_POST['passwd']);
+                    }
+                ?>
                 <label for="email"><b>Correo electrónico:*</b></label>
                 <input type="mail" placeholder="Escribe tu correo electrónico" name="email" required>
 
                 <label for="passwd"><b>Contraseña:*</b></label>
                 <input type="password" placeholder="Escribe tu contraseña" name="passwd" required>
 
+                
+
                 <button type="submit">Entrar a mi cuenta</button>
+
+                
+
                 <a href="#">Restablecer contraseña</a>
+                
             </form>
         </div>
     </section>

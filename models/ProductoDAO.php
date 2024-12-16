@@ -142,16 +142,11 @@ class ProductoDAO {
         $stmt->bind_param("i", $descuento);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        // Comprobar si existe el descuento
-        if ($result->num_rows > 0) {
-            $descuento = $result->fetch_assoc(); // Obtener datos del descuento
-        } else {
-            $descuento = false; // Código de descuento no encontrado
-        }
-
-        $stmt->close();
         $con->close();
-        return $descuento; 
+        $stmt->close();
+        return $result;
+        
+
+        
     }
 }

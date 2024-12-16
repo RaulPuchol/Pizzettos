@@ -1,5 +1,10 @@
 <?php include_once "script/session.php"?>
-
+<?php
+    if(isset($_POST['idproducto'])) {
+        $session = new productoController();
+        $session->meterAlCarrito($_POST['email'], $_POST['idproducto']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,14 +87,14 @@
                 <a href="#buy"><?= $producto->getNombre(); ?></a>
                 <p><?= $producto->getPrecioBase(); ?> €</p>
                 
-                <form action="?controller=producto&action=meterAlCarrito" method="post">
+                <form action="?controller=producto&action=pizzas" method="post">
                     <input type="hidden" name="email" value="<?php 
                     echo htmlspecialchars($email);
                     ?>">
                     <input type="hidden" name="idproducto" value="<?= $producto->getIdproducto()?>">
                     <button type="submit"><i class="fa-solid fa-cart-shopping"></i></button>
                 </form>
-
+                
                 
             </div> 
         <?php endforeach; ?>

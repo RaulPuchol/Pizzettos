@@ -353,3 +353,8 @@ text-decoration: none;
 .profilebuttons i {
     font-size: 3vw;
 } 
+
+form p {
+    color: red;
+    text-align: center;
+}

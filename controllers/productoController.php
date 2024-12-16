@@ -19,16 +19,12 @@ class productoController{
     
 
 
-    public function meterAlCarrito() {
-        $emailCarrito = $_POST['email'];
-        $idproducto = $_POST['idproducto'];
+    public function meterAlCarrito($emailCarrito, $idproducto) {
 
         if ($emailCarrito === "none"){
             header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
         } else {
             productoDAO::insertCarrito($emailCarrito, $idproducto, 1);
-            header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=pizzas");
-
         }
 
         
@@ -59,10 +55,28 @@ class productoController{
         productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento);
     }
 
-    public function descuento() {
-        $descuento = $_POST['descuento'];
 
-        $resultado = productoDAO::validarDescuento($descuento);
+    public function descuento($descuento) {
+        $result = productoDAO::validarDescuento($descuento);
+        // Comprobar si existe el descuento
+        if ($result->num_rows > 0) {
+            $descuento = $result->fetch_assoc(); // Obtener datos del descuento
+            return $descuento['Porcentaje'];
+        } else {
+            return 0;
+        }
+
+    }
+
+    public function descuento1($descuento) {
+        $result = productoDAO::validarDescuento($descuento);
+        // Comprobar si existe el descuento
+        if ($result->num_rows > 0) {
+            $descuento = $result->fetch_assoc(); // Obtener datos del descuento
+            echo "<p style='color: green'>Descuento aplicado!</p>";
+        } else {
+            echo "<p style='color: red'>No existe codigo de descuento.</p>";
+        }
 
     }
 }

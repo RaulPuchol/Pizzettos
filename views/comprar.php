@@ -1,5 +1,6 @@
 <?php include_once "script/sessioncompra.php"?>
 
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -128,7 +129,7 @@ include_once header;
                                     <input type="hidden" name="email" value="<?= $email?>">
                                     <input type="hidden" name="precio" value="<?= $precio?>">
                                     <input type="hidden" name="cantidad" value="<?= $cantidad?>">
-                                    <input type="hidden" name="descuento" id="descuentoid" default="1">
+                                    <input type="hidden" name="descuento" id="descuentoid">
                                     <button type="submit">Comprar en efectivo</button>
                                 </div>
                                 <div>
@@ -160,14 +161,18 @@ include_once header;
                     </div>
                 </div>
                 
-                <form class="searchercarrito">
-                    
+                <form action="?controller=producto&action=comprar" class="searchercarrito" method="post" >
                     <label for="descuento">Codigo descuento</label>
                     <div>
                         <input type="text" name="descuento" id="descuento">
                         <button type="submit" onclick="copiarValor()">APLICAR</button>
                     </div>
-                    
+                    <?php
+                        if(isset($_POST['descuento'])) {
+                            $session = new productoController();
+                            $session->descuento1($_POST['descuento']);
+                        }
+                    ?>
                 </form>
 
                 <div class="total">
@@ -176,8 +181,21 @@ include_once header;
                     <?php $total = 0;
                     foreach (productoController::getProductosCarrito($email) as $producto){
                         $total += $producto->getPrecioBase() * $producto->cantidad;
-                     } ?>
-                    <p><?=$total?> €</p>
+                    } 
+                    
+                    if (isset($_POST['descuento'])) {
+                        $session = new productoController();
+                        $descuentoAplicado = $session->descuento($_POST['descuento']);
+
+                        if ($descuentoAplicado > 0 && $descuentoAplicado <= 100) {
+                            $descuentoCalculado = $total * ($descuentoAplicado / 100); // Si es porcentaje
+                            $total -= $descuentoCalculado; 
+                            echo "<p>Descuento aplicado: ($descuentoAplicado%)</p>";
+                        }
+                    }
+                    
+                    ?>
+                    <p><?=number_format($total,2)?> €</p>
                 </div>
             </div>
         </div>           
@@ -197,29 +215,8 @@ include_once footer;
 document.getElementById("currentUrl").value = window.location.href;
 
 function copiarValor() {
-    event.preventDefault();
     const valor = document.getElementById("descuento").value;
-    //document.getElementById("descuentoid").value = valor;
-
-    const datos = {descuento: valor}; 
-
-    fetch('controller=producto&action=descuento' {
-        method: 'POST', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('Éxito:', data.message);
-        } else {
-            console.log('Error:', data.error);
-        }
-    })
-    .catch(error => console.error('Error en la solicitud:', error));
-    
+    document.getElementById("descuentoid").value = valor;
 }
 
 </script>

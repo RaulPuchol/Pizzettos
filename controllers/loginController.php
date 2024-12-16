@@ -21,9 +21,9 @@ class loginController{
         UsuarioDAO::insertarUsuario($email, $usuario, $passwdHash);
     }
 
-    public function getAccount() {
-        $email = $_POST['email'];
-        $passwd = $_POST['passwd'];
+    public function getAccount($email, $passwd) {
+        //$email = $_POST['email'];
+        //$passwd = $_POST['passwd'];
 
         $result = UsuarioDAO::iniciarsesion($email);
 
@@ -38,10 +38,10 @@ class loginController{
 
                 header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=index");
             } else {
-                return false; // Contraseña incorrecta
+                echo"<p>Usuario o Contraseña incorrectas</p>";
             }
         } else {
-            return null; // Usuario no encontrado
+            echo"<p>Usuario o Contraseña incorrectas</p>";
         }
     }
 
