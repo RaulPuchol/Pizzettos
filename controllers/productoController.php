@@ -58,4 +58,11 @@ class productoController{
 
         productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento);
     }
+
+    public function descuento() {
+        $descuento = $_POST['descuento'];
+
+        $resultado = productoDAO::validarDescuento($descuento);
+
+    }
 }

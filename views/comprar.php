@@ -128,7 +128,7 @@ include_once header;
                                     <input type="hidden" name="email" value="<?= $email?>">
                                     <input type="hidden" name="precio" value="<?= $precio?>">
                                     <input type="hidden" name="cantidad" value="<?= $cantidad?>">
-                                    <input type="hidden" name="descuento" value="1">
+                                    <input type="hidden" name="descuento" id="descuentoid" default="1">
                                     <button type="submit">Comprar en efectivo</button>
                                 </div>
                                 <div>
@@ -165,7 +165,7 @@ include_once header;
                     <label for="descuento">Codigo descuento</label>
                     <div>
                         <input type="text" name="descuento" id="descuento">
-                        <button type="submit">APLICAR</button>
+                        <button type="submit" onclick="copiarValor()">APLICAR</button>
                     </div>
                     
                 </form>
@@ -195,6 +195,33 @@ include_once footer;
 <script>
 // Establecer la URL actual en el campo oculto
 document.getElementById("currentUrl").value = window.location.href;
+
+function copiarValor() {
+    event.preventDefault();
+    const valor = document.getElementById("descuento").value;
+    //document.getElementById("descuentoid").value = valor;
+
+    const datos = {descuento: valor}; 
+
+    fetch('controller=producto&action=descuento' {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Éxito:', data.message);
+        } else {
+            console.log('Error:', data.error);
+        }
+    })
+    .catch(error => console.error('Error en la solicitud:', error));
+    
+}
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

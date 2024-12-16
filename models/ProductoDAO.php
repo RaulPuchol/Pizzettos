@@ -116,8 +116,8 @@ class ProductoDAO {
         $idproducto = 0;
         // Insertar en la tabla haciendo un bucle insertando los productos en cada row
         foreach (ProductoDAO::getProductosDelCarrito($emailusuario) as $producto){ 
-            $precio1 += $producto->getPrecioBase() * $producto->cantidad; 
-            $cantidad += $producto->cantidad;
+            $precio1 = $producto->getPrecioBase() * $producto->cantidad; 
+            $cantidad = $producto->cantidad;
             $idproducto = $producto->getIdproducto();
             $stmt = $con->prepare("INSERT INTO Pedido_Producto VALUES (?, ?, ?, ?)");
             $stmt->bind_param("diii", $precio1, $cantidad, $IDpedido, $idproducto);
@@ -134,7 +134,24 @@ class ProductoDAO {
         
     }
 
-    public static function insert_pedidoProducto() {
+    public static function validarDescuento($descuento) {
+        $con = DataBase::connect();
 
+        // Preparar la consulta
+        $stmt = $con->prepare("SELECT * FROM Descuento WHERE IDdescuento = ?");
+        $stmt->bind_param("i", $descuento);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Comprobar si existe el descuento
+        if ($result->num_rows > 0) {
+            $descuento = $result->fetch_assoc(); // Obtener datos del descuento
+        } else {
+            $descuento = false; // Código de descuento no encontrado
+        }
+
+        $stmt->close();
+        $con->close();
+        return $descuento; 
     }
 }
