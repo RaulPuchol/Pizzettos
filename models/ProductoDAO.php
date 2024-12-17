@@ -5,8 +5,6 @@ include_once("config/dataBase.php");
 class ProductoDAO {
     public static function getAll() {
         $con = DataBase::connect();
-        //$allowedColumns = ['idproducto', 'nombre', 'preciobase', 'idcategoria'];
-        //$order = in_array($order, $allowedColumns) ? $order : 'idproducto';
 
         $stmt = $con->prepare("SELECT * FROM Producto");
         $stmt->execute();

@@ -15,6 +15,10 @@ class loginController{
         include_once("views/pedidos.php");
     }
 
+    public static function nombrePedido($emailCarrito) {
+        return UsuarioDAO::pedidos($emailCarrito);
+    }
+
     public function createAccount(){
         $email = $_POST['email'];
         $usuario = $_POST['nombre'];

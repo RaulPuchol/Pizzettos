@@ -5,7 +5,10 @@ session_start(); // Asegúrate de iniciar la sesión al principio
 if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
     // Si la sesión está iniciada, redirige a otra página
     header("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
+} else {
+    $email = $_SESSION['email'];
 }
+
 
 // Si no hay sesión, continúa mostrando la página de inicio de sesión
 ?>
@@ -44,6 +47,32 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
         </div>
     </header>
 
+    <section id="pedido">
+        <h1>Mis pedidos</h1>
+        
+        <div class="pedidotable">
+            <table>
+                <tr>
+                    <th>ID pedido</th>
+                    <th>Email</th>
+                    <th>Fecha del pedido</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+                <?php foreach (loginController::nombrePedido($email) as $pedido){
+                echo "<tr>
+                    <td>".$pedido->getIDpedido()."</td>
+                    <td>".$pedido->getemailusuario() ."</td>
+                    <td>".$pedido->getFechapedido(). "</td>
+                    <td>".$pedido->getCantidad()."</td>
+                    <td>".$pedido->getPrecio()." €</td>
+                </tr>";
+            
+                }  ?>
+            </table>
+        </div>
+        
+    </section>
 
 
 

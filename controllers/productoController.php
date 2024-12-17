@@ -63,6 +63,8 @@ class productoController{
         }
 
         productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, number_format($precio,2), $iddescuento);
+
+        header ("location: ?controller=login&action=pedidos");
     }
 
 

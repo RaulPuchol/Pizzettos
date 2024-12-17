@@ -22,6 +22,12 @@
 
 <?php
 include_once header;
+$descuentoAplicado = '';
+
+if (isset($_POST['descuento'])) {
+    $descuentoAplicado = $_POST['descuento'];
+}
+
 ?>
     <section id="comprar">
         <div></div>
@@ -129,7 +135,7 @@ include_once header;
                                     <input type="hidden" name="email" value="<?= $email?>">
                                     <input type="hidden" name="precio" value="<?= $precio?>">
                                     <input type="hidden" name="cantidad" value="<?= $cantidad?>">
-                                    <input type="hidden" name="descuento" id="descuentoid">
+                                    <input  name="descuento" id="descuentoid" value="<?= htmlspecialchars($descuentoAplicado) ?>">
                                     <button type="submit">Comprar en efectivo</button>
                                 </div>
                                 <div>
@@ -164,8 +170,8 @@ include_once header;
                 <form action="?controller=producto&action=comprar" class="searchercarrito" method="post" >
                     <label for="descuento">Codigo descuento</label>
                     <div>
-                        <input type="text" name="descuento" id="descuento">
-                        <button type="submit" onclick="copiarValor()">APLICAR</button>
+                        <input type="text" name="descuento" id="descuento" value="<?= htmlspecialchars($descuentoAplicado) ?>">
+                        <button type="submit" >APLICAR</button>
                     </div>
                     <?php
                         if(isset($_POST['descuento'])) {
@@ -209,16 +215,6 @@ include_once header;
 <?php
 include_once footer;
 ?>
-
-<script>
-// Establecer la URL actual en el campo oculto
-document.getElementById("currentUrl").value = window.location.href;
-
-function copiarValor() {
-    const valor = document.getElementById("descuento").value;
-    document.getElementById("descuentoid").value = valor;
-}
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
