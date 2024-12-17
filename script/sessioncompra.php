@@ -7,7 +7,7 @@ if (!isset($_SESSION['email'])){
 }
 
 if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
-    header("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
+    header("Location: ?controller=login&action=login");
     exit;
 }
 ?>

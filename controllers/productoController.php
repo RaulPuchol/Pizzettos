@@ -52,7 +52,17 @@ class productoController{
         $precio = $_POST['precio'];
         $iddescuento = $_POST['descuento'];
 
-        productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento);
+        if(!isset($_POST['descuento']) || $_POST['descuento'] == '') {
+            $iddescuento = 1;
+        }
+
+        if ($iddescuento != 1) {
+            $descuento = productoController::descuento($iddescuento);
+            $descuentoCalculado = $precio * ($descuento / 100);
+            $precio -= $descuentoCalculado; 
+        }
+
+        productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, number_format($precio,2), $iddescuento);
     }
 
 

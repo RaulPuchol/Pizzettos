@@ -34,7 +34,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
         
             <div id="headprofile" class="row">
                 <div class="col logoprofile">
-                <div><a href="?controller=producto"><button><i class="fa-solid fa-arrow-left"></i> Volver a la tienda</button></a></div>
+                <div><a href="/dashboard/Pizzettos/Pizzettos/?controller=login&action=profile"><button><i class="fa-solid fa-arrow-left"></i> Volver al perfil</button></a></div>
                 <div><a href="?controller=producto"><img src="Images/Logo.png"></a></div>
                 <div></div>
                 
@@ -43,19 +43,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
             </div>
         </div>
     </header>
-
-    <section id="profile">
-        <h1>Mi cuenta</h1>
-        <div class="profilebuttons">
-            <div><a href="?controller=login&action=pedidos"><button><i class="fa-solid fa-bag-shopping"></i><h4>Mis pedidos</h4><p>Podrás consultar tus pedidos y realizar devoluciones</p></button></a></div>
-            <div><a><button><i class="fa-solid fa-location-dot"></i><h4>Mis direcciones</h4><p>Podrás modificar, eliminar o añadir una nueva dirección de entrega</p></button></a></div>
-            <div><a><button><i class="fa-solid fa-user"></i><h4>Mis datos personales</h4><p>Podrás cambiar tus datos personales desde aquí</p></button></a></div>
-            <div><a><button><i class="fa-solid fa-store"></i><h4>Compras en tienda</h4><p>Podrás revisar tus compras al día siguiente de realizarlas</p></button></a></div>
-            <div><a><button><i class="fa-solid fa-envelope"></i><h4>Newsletter</h4><p>Suscríbete para enterarte antes que nadie de nuestras ofertas y novedades</p></button></a></div>
-            <div><a><button><i class="fa-solid fa-tag"></i><h4>Mis promociones</h4><p>Consulta todos tus descuentos y promociones</p></button></a></div>
-        </div>
-        <a class="logout" href="?controller=login&action=logout">Salir de mi cuenta</a>
-    </section>
 
 
 

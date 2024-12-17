@@ -85,7 +85,7 @@ include_once header;
                     <form>
                         <div class="input">
                             <div>
-                                <input type="radio" id="1" name="1" value="1">
+                                <input type="radio" id="1" name="envio" value="1">
                             </div>
                             <div>
                                 <p><label for="1">Envío a domicilio</label></p>
@@ -96,7 +96,7 @@ include_once header;
                         </div>
                         <div class="input">
                             <div>
-                                <input type="radio" id="2" name="2" value="2">
+                                <input type="radio" id="2" name="envio" value="2">
                             </div>
                             <div>
                                 <p><label for="2">Recoger en tienda</label></p>

@@ -11,6 +11,9 @@ class loginController{
     public function profile(){
         include_once("views/profile.php");
     }
+    public function pedidos(){
+        include_once("views/pedidos.php");
+    }
 
     public function createAccount(){
         $email = $_POST['email'];
