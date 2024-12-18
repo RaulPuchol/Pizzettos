@@ -36,7 +36,7 @@ if (isset($_SESSION['email']) && $_SESSION['email'] != "none") {
         <div class="container-fluid m-0 w-100 backgroundlogin">
             <div id="headlogin" class="row">
                 <div class="col logo">
-                <a href="?controller=producto"><img src="Images/Logo.png"></a>
+                <a href="?controller=producto"><img src="Images/Logo.svg" alt="logo"></a>
                 </div>
             </div>
         </div>

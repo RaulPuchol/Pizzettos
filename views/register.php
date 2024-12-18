@@ -32,7 +32,7 @@ if (isset($_SESSION['email'])) {
         <div class="container-fluid m-0 w-100 backgroundregister">
             <div id="headregister" class="row">
                 <div class="col logo">
-                <a href="?controller=producto"><img src="Images/Logo.png"></a>
+                <a href="?controller=producto"><img src="Images/Logo.svg" alt="logo"></a>
                 </div>
             </div>
         </div>

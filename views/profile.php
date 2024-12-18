@@ -35,7 +35,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none") {
             <div id="headprofile" class="row">
                 <div class="col logoprofile">
                 <div><a href="?controller=producto"><button><i class="fa-solid fa-arrow-left"></i> Volver a la tienda</button></a></div>
-                <div><a href="?controller=producto"><img src="Images/Logo.png"></a></div>
+                <div><a href="?controller=producto"><img src="Images/Logo.svg" alt="logo"></a></div>
                 <div></div>
                 
                 

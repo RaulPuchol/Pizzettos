@@ -6,7 +6,7 @@
         <div class="container-fluid m-0 w-100 background">
             <div id="head" class="row">
                 <div class="col col-4 logo">
-                <a href="?controller=producto"><img src="Images/Logo.png"></a>
+                <a href="?controller=producto"><img src="Images/Logo.svg" alt="logo"></a>
                 </div>
                 <div class="col searcher">
                     <input type="text" placeholder="Buscar">
