@@ -2,6 +2,7 @@
 include_once "controllers/loginController.php";
 include_once "controllers/productoController.php";
 include_once "config/parameters.php";
+include_once "api/apiproductosController.php";
 
 if (!isset($_GET['controller'])) {
     echo "No existe en la url Controller";

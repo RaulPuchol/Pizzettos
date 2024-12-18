@@ -1,0 +1,121 @@
+* {
+    margin: 0%;
+    padding: 0;  /* El !important asegura que se aplique */
+    --bs-gutter-x: 0 !important;
+    background-color: #001C85;
+    font-family: "Nunito";
+}
+
+.backgroundprofile {
+    background-color: #001C85;
+    width: 100%;
+    
+}
+
+#headprofile {
+    width: 100%;
+}
+
+
+.logoprofile {
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+    align-items: center;
+    
+}
+
+.logoprofile a{
+display: flex;
+justify-content: center;
+text-decoration: none;
+}
+
+.logoprofile a button {
+    background-color: white;
+    border: none;
+    color: #001C85;
+    padding: 6px 15px;
+    border-radius: 25px;
+    font-weight: bolder;
+}
+.logoprofile a i {
+    background-color: white;
+}
+
+.logoprofile img {
+    width: 180px;
+}
+
+
+#adminbody {
+    display: grid;
+    grid-template-columns: 30% auto;
+    min-height: 100vh;
+}
+
+.adminpanelleft {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    align-items: center;
+    gap: 20px;
+    background-color: #1238be ;
+    width: 100%;
+    height: 100%;
+}
+
+.adminpanelleft h1 {
+    color: white;
+    padding: 6px 15px;
+    width: 500px;
+    font-weight: bolder;
+    font-size: 45px;
+    background-color: #1238be ;
+    text-align: center;
+}
+
+.adminpanelleft a {
+    width: 500px;
+    background-color: #1238be ;
+}
+
+.adminpanelleft a button {
+    background-color: white;
+    border: none;
+    color: #001C85;
+    padding: 6px 15px;
+    width: 500px;
+    border-radius: 25px;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.adminpanelright #producto div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1%;
+    padding: 1% 0%;
+    height: 30%;
+    gap: 5%;
+    padding-left: 5%;
+}
+
+.adminpanelright #producto div div{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+   
+}
+.adminpanelright #producto div div p{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+.adminpanelright #producto div img{
+    background-color: white; display: flex;
+    width: 100px;
+    
+}
