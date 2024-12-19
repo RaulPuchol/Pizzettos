@@ -11,7 +11,7 @@ class apiproductosController{
         
 
         
-        $input = json_decode(file_get_contents('php://input'), true);
+        
         
         $con = DataBase::connect();
 
@@ -27,6 +27,18 @@ class apiproductosController{
             http_response_code(404); // No encontrado
             echo json_encode(["message" => "No se encontraron productos"]);
         }
+
+    }
+
+    public static function updateproductosapi($id) {
+        
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("UPDATE Producto SET nombre = ?, precio = ?, stock = ? WHERE id = ?");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        
 
     }
 

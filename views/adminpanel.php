@@ -53,12 +53,9 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
         </div>
         <div class="adminpanelright">
             
-                <div id="producto">
-                <p>IDproducto</p>
-                <p>Imagen</p>
-                <p>Nombre</p>
-                <p>PrecioBase</p>
-                </div> 
+            <div id="producto">
+        
+            </div> 
             
         </div>
 
@@ -72,7 +69,37 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<script>
+<script>     
+        fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_YK3FqEYXXfnRdW6P8EHZtmB96cdGqENL1Vai4uVk&base_currency=EUR')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al obtener los datos');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        producto.innerHTML = '';
+                        const producto1 = document.getElementById('producto');
+
+                        const transformprecio = data.data;
+                        const select = document.createElement('select');
+                        select.classList.add("moneyselect");
+                        
+
+                        producto1.appendChild(select);
+
+
+                        Object.keys(transformprecio).forEach(moneda => {
+                            const option = document.createElement('option');
+                            option.value = moneda;
+                            option.textContent = moneda;
+                            select.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al cargar los datos:', error);
+                    });
+
         // Llamada a la API usando fetch
         fetch('?controller=apiproductos&action=getproductosapi')
             .then(response => {
@@ -85,18 +112,19 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 const producto1 = document.getElementById('producto');
                 
                 // Limpiar la tabla antes de agregar datos (opcional)
-                producto.innerHTML = '';
-
                 // Agregar cada producto como una fila de la tabla
                 data.forEach(producto => {
                     const bloque = document.createElement('div');
                     bloque.innerHTML = `
                         <div><p>IDproducto:</p> <p>${producto.IDproducto}</p></div>
                         <img src="Images/${producto.Imagen}.webp">
-                        <div><p>Nombre del Producto:</p> <p>${producto.Nombre}</p></div>
-                        <div><p>Precio del Producto:</p> <p>${producto.PrecioBase} €</p></div>
+                        <div><p>Nombre del Producto:</p> <input value="${producto.Nombre}"></div>
+                        <div><p>Precio del Producto:</p> <input value="${producto.PrecioBase}"></div>
+                        <div><p>ID Descuento:</p> <input value="${producto.IDdescuento}"></div>
+                        <div><p>ID Categoria:</p> <input value="${producto.IDcategoria}"></div>
                     `;
                     producto1.appendChild(bloque);
+                    
                 });
             })
             .catch(error => {
@@ -104,6 +132,26 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 const producto = document.getElementById('producto');
                 producto.innerHTML = '<p>No se pudieron cargar los datos.</p>';
             });
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const select = document.querySelector('.moneyselect');
+                select.addEventListener('change', (event) => {
+                    const selectedCurrency = event.target.value;
+                    
+                            const exchangeRate = data.data[selectedCurrency];
+                            const productElements = document.querySelectorAll('#producto div');
+                            productElements.forEach(productElement => {
+                                const priceInput = productElement.querySelector('input[value]');
+                                const basePrice = parseFloat(priceInput.value);
+                                const convertedPrice = (basePrice * exchangeRate).toFixed(2);
+                                priceInput.value = convertedPrice;
+                            });
+                        })
+                });
+
+            
+            
     </script>
 </body>
 </html>

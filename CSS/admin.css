@@ -98,7 +98,7 @@ text-decoration: none;
     padding: 1% 0%;
     height: 30%;
     gap: 5%;
-    padding-left: 5%;
+    padding-left: 2%;
 }
 
 .adminpanelright #producto div div{
@@ -112,6 +112,21 @@ text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
+   
+}
+
+.adminpanelright #producto div div input{
+    background-color: white;
+   
+}
+
+.adminpanelright #producto div div select{
+    background-color: white;
+   
+}
+
+.adminpanelright #producto .selectmoney {
+    background-color: white;
    
 }
 .adminpanelright #producto div img{
