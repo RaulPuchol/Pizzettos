@@ -9,10 +9,6 @@ class apiproductosController{
 
     public static function getproductosapi() {
         
-
-        
-        
-        
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM Producto");
@@ -30,16 +26,18 @@ class apiproductosController{
 
     }
 
-    public static function updateproductosapi($id) {
-        
+    public static function deleteproductosapi($id) {
         $con = DataBase::connect();
 
-        $stmt = $con->prepare("UPDATE Producto SET nombre = ?, precio = ?, stock = ? WHERE id = ?");
+        $stmt = $con->prepare("DELETE FROM Producto WHERE IDproducto = ?");
+        $stmt->bind_param("i", $id);
         $stmt->execute();
-        $result = $stmt->get_result();
         
-        
-
+        $stmt->close();
+        $con->close();
     }
+
+    
+
 
 }
