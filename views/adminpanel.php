@@ -116,7 +116,10 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 data.forEach(producto => {
                     const bloque = document.createElement('div');
                     bloque.innerHTML = `
-                        <button type="button" id="delete">Eliminar</button>
+                        <form method="POST" action="?controller=apiproductos&action=deleteproductosapi">
+                        <input type="hidden" name="IDproducto" value="${producto.IDproducto}">
+                        <button type="submit">Eliminar</button>
+                        </form>
                         <div><p>IDproducto:</p> <p>${producto.IDproducto}</p></div>
                         <img src="Images/${producto.Imagen}.webp">
                         <div><p>Nombre del Producto:</p> <input value="${producto.Nombre}"></div>
@@ -134,27 +137,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 producto.innerHTML = '<p>No se pudo borrar ningun producto.</p>';
             });
 
-            document.getElementById('delete').addEventListener('click',()=> {
-                fetch('?controller=apiproductos&action=deleteproductosapi' {
-                    method:'DELETE'
-                    
-                    body: JSON.stringify({ IDproducto: producto.IDproducto }),
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al obtener los datos');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    
-                
-                })
-                .catch(error => {
-                    console.error('Error al borrar los datos:', error);;
-                    producto.innerHTML = '<p>No se pudieron borrar los datos.</p>';
-                });
-            });
 
 
             /*document.addEventListener('DOMContentLoaded', () => {

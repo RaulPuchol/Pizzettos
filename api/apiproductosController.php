@@ -26,7 +26,8 @@ class apiproductosController{
 
     }
 
-    public static function deleteproductosapi($id) {
+    public static function deleteproductosapi() {
+        $id = $_POST['IDproducto'];
         $con = DataBase::connect();
 
         $stmt = $con->prepare("DELETE FROM Producto WHERE IDproducto = ?");
@@ -35,9 +36,10 @@ class apiproductosController{
         
         $stmt->close();
         $con->close();
+        header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=apiproductos&action=adminpanel");
     }
 
-    
+    //deletehecho
 
 
 }
