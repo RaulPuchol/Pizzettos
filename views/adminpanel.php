@@ -116,19 +116,32 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 data.forEach(producto => {
                     const bloque = document.createElement('div');
                     bloque.innerHTML = `
-                        <form method="POST" action="?controller=apiproductos&action=deleteproductosapi">
-                        <input type="hidden" name="IDproducto" value="${producto.IDproducto}">
-                        <button type="submit">Eliminar</button>
+                        
+                        <div>
+                        <p>IDproducto:</p> 
+                        <p>${producto.IDproducto}</p>
+
+                        <form class="delete-form">
+                            <input type="hidden" name="IDproducto" id="IDproductod" value="${producto.IDproducto}">
+                            <button type="button" onclick="deleteProductData(${producto.IDproducto})">Eliminar</button>
                         </form>
-                        <div><p>IDproducto:</p> <p>${producto.IDproducto}</p></div>
+                        
+
+                        </div>
                         <img src="Images/${producto.Imagen}.webp">
-                        <div><p>Nombre del Producto:</p> <input value="${producto.Nombre}"></div>
-                        <div><p>Precio del Producto:</p> <input value="${producto.PrecioBase}"></div>
-                        <div><p>ID Descuento:</p> <input value="${producto.IDdescuento}"></div>
-                        <div><p>ID Categoria:</p> <input value="${producto.IDcategoria}"></div>
+
+                        <form class="producto-form">
+                            <input type="hidden" id="IDproducto" value="${producto.IDproducto}">
+                            <div><p>Nombre del Producto:</p> <input id="Nombre" value="${producto.Nombre}"></div>
+                            <div><p>Precio del Producto:</p> <input id="PrecioBase" value="${producto.PrecioBase}"></div>
+                            <div><p>ID Descuento:</p> <input class="inputshort" id="IDdescuento" value="${producto.IDdescuento}"></div>
+                            <div><p>ID Categoria:</p> <input class="inputshort" id="IDcategoria" value="${producto.IDcategoria}"></div>
+                            <button type="button" onclick="updateProductData(${producto.IDproducto})">Actualizar</button>
+                        </form>
                     `;
                     producto1.appendChild(bloque);
-                    
+                    const form = document.getElementById('producto-form');
+                    const dform = document.getElementById('delete-form');
                 });
             })
             .catch(error => {
@@ -136,6 +149,94 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 const producto = document.getElementById('producto');
                 producto.innerHTML = '<p>No se pudo borrar ningun producto.</p>';
             });
+
+
+           // Seleccionar todos los botones de actualización
+           
+           function updateProductData(id) {
+                // Obtener los datos del formulario dinámicamente
+                const button = document.querySelector(`button[onclick="updateProductData(${id})"]`);
+                const form = button.closest('form');
+                
+                const producto = {
+                    IDproducto: form.querySelector('#IDproducto').value,
+                    Nombre: form.querySelector('#Nombre').value,
+                    PrecioBase: form.querySelector('#PrecioBase').value,
+                    IDdescuento: form.querySelector('#IDdescuento').value,
+                    IDcategoria: form.querySelector('#IDcategoria').value
+                };
+
+                // Hacer el fetch para actualizar los datos en el servidor
+                fetch("?controller=apiproductos&action=updateproductosapi", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(producto)  // Enviar el objeto 'producto' con los valores del formulario
+                })
+                .then(response => {
+                    // Inspecciona el contenido de la respuesta
+                    return response.text().then(text => {
+                        console.log("Respuesta del servidor:", text);
+                        try {
+                            return JSON.parse(text); // Intenta parsear el texto como JSON
+                        } catch (error) {
+                            throw new Error("La respuesta no es un JSON válido");
+                        }
+                    });
+                })
+                .then(json => {
+                    if (json.success) {
+                        // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
+                        alert(`Producto actualizado`);
+                    } else {
+                        alert("Error al actualizar el producto");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error al comunicarse con el servidor");
+                });
+            }
+
+            function deleteProductData(id) {
+                // Obtener los datos del formulario dinámicamente
+                const button = document.querySelector(`button[onclick="deleteProductData(${id})"]`);
+                const dform = button.closest('form');
+                
+                const producto = {
+                    IDproducto: dform.querySelector('#IDproductod').value
+                };
+
+                // Hacer el fetch para actualizar los datos en el servidor
+                fetch("?controller=apiproductos&action=deleteproductosapi", {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(producto)  // Enviar el objeto 'producto' con los valores del formulario
+                    
+                })
+                .then(response => {
+                    // Inspecciona el contenido de la respuesta
+                    return response.text().then(text => {
+                        console.log("Respuesta del servidor:", text);
+                        try {
+                            return JSON.parse(text); // Intenta parsear el texto como JSON
+                        } catch (error) {
+                            throw new Error("La respuesta no es un JSON válido");
+                        }
+                    });
+                })
+                .then(json => {
+                    if (json.success) {
+                        // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
+                        alert(`Producto borrado`);
+                    } else {
+                        alert("Error al borrar el producto");
+                    }
+                })
+            }
 
 
 

@@ -134,3 +134,19 @@ text-decoration: none;
     width: 100px;
     
 }
+
+.inputshort {
+    width: 30%;
+}
+
+form button {
+    background: white;
+    height: fit-content;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+}
