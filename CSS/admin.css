@@ -2,7 +2,6 @@
     margin: 0%;
     padding: 0;  /* El !important asegura que se aplique */
     --bs-gutter-x: 0 !important;
-    background-color: #001C85;
     font-family: "Nunito";
 }
 
@@ -101,6 +100,10 @@ text-decoration: none;
     padding-left: 2%;
 }
 
+.adminpanelright #producto div {
+    border: #001C85 solid 1px;
+}
+
 .adminpanelright #producto div div{
     background-color: white;
     display: flex;
@@ -130,6 +133,73 @@ text-decoration: none;
    
 }
 .adminpanelright #producto div img{
+    background-color: white; display: flex;
+    width: 100px;
+    
+}
+
+.inputshort {
+    width: 30%;
+}
+
+form button {
+    background: white;
+    height: fit-content;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+}
+
+
+
+
+
+
+#productoadd .producto-form-add div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1%;
+    padding: 1% 0%;
+    height: 30%;
+    gap: 5%;
+    padding-left: 2%;
+}
+
+#productoadd .producto-form-add div div{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+   
+}
+#productoadd .producto-form-add div div p{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+#productoadd .producto-form-add div div input{
+    background-color: white;
+   
+}
+
+#productoadd .producto-form-add div div select{
+    background-color: white;
+   
+}
+
+#productoadd .producto-form-add .selectmoney {
+    background-color: white;
+   
+}
+#productoadd .producto-form-add div img{
     background-color: white; display: flex;
     width: 100px;
     

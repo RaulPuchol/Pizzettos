@@ -52,7 +52,16 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
         <a href=""><button>Tabla de Usuarios</button></a>
         </div>
         <div class="adminpanelright">
-            
+
+            <div id="productoadd">
+                <form class="producto-form-add">
+                    <div><p>Nombre del Producto:</p> <input id="Nombre" Requiered></div>
+                    <div><p>Precio del Producto:</p> <input id="PrecioBase" Requiered></div>
+                    <div><p>ID Descuento:</p> <input class="inputshort" id="IDdescuento" Requiered></div>
+                    <div><p>ID Categoria:</p> <input class="inputshort" id="IDcategoria" Requiered></div>
+                    <button type="button" onclick="addProductData(${producto.IDproducto})">Añadir</button>
+                </form>
+            </div> 
             <div id="producto">
         
             </div> 
@@ -236,6 +245,52 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                         alert("Error al borrar el producto");
                     }
                 })
+            }
+
+            function addProductData(id) {
+                // Obtener los datos del formulario dinámicamente
+                const button = document.querySelector(`button[onclick="updateProductData(${id})"]`);
+                const form = button.closest('form');
+                
+                const producto = {
+                    IDproducto: form.querySelector('#IDproducto').value,
+                    Nombre: form.querySelector('#Nombre').value,
+                    PrecioBase: form.querySelector('#PrecioBase').value,
+                    IDdescuento: form.querySelector('#IDdescuento').value,
+                    IDcategoria: form.querySelector('#IDcategoria').value
+                };
+
+                // Hacer el fetch para actualizar los datos en el servidor
+                fetch("?controller=apiproductos&action=updateproductosapi", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(producto)  // Enviar el objeto 'producto' con los valores del formulario
+                })
+                .then(response => {
+                    // Inspecciona el contenido de la respuesta
+                    return response.text().then(text => {
+                        console.log("Respuesta del servidor:", text);
+                        try {
+                            return JSON.parse(text); // Intenta parsear el texto como JSON
+                        } catch (error) {
+                            throw new Error("La respuesta no es un JSON válido");
+                        }
+                    });
+                })
+                .then(json => {
+                    if (json.success) {
+                        // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
+                        alert(`Producto actualizado`);
+                    } else {
+                        alert("Error al actualizar el producto");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error al comunicarse con el servidor");
+                });
             }
 
 
