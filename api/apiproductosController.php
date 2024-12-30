@@ -71,4 +71,27 @@ class apiproductosController{
         }
     }
 
+    public static function addproductosapi() {
+        getHeadersApi::getHeadersapi();
+        $input = json_decode(file_get_contents('php://input'), true);
+        $nombre = isset($input['Nombre']) ? $input['Nombre'] : null;
+        $precioBase = isset($input['PrecioBase']) ? $input['PrecioBase'] : null;
+        $idDescuento = isset($input['IDdescuento']) ? $input['IDdescuento'] : null;
+        $idCategoria = isset($input['IDcategoria']) ? $input['IDcategoria'] : null;
+            
+        $con = DataBase::connect();
+        $stmt = $con->prepare("INSERT INTO Producto (Nombre, PrecioBase, IDdescuento, IDcategoria) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sdii", $nombre, $precioBase, $idDescuento, $idCategoria);
+        $stmt->execute();
+
+        $stmt->close();
+        $con->close();
+    
+        if ($stmt->affected_rows > 0) {
+            echo json_encode(["success" => true, "message" => "Producto actualizado"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "No se pudo actualizar o el producto ya tiene los mismos datos"]);
+        }
+    }
+
 }

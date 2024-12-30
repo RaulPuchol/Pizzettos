@@ -59,7 +59,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                     <div><p>Precio del Producto:</p> <input id="PrecioBase" Requiered></div>
                     <div><p>ID Descuento:</p> <input class="inputshort" id="IDdescuento" Requiered></div>
                     <div><p>ID Categoria:</p> <input class="inputshort" id="IDcategoria" Requiered></div>
-                    <button type="button" onclick="addProductData(${producto.IDproducto})">Añadir</button>
+                    <button type="button" onclick="addProductData()">Añadir</button>
                 </form>
             </div> 
             <div id="producto">
@@ -198,13 +198,16 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                     if (json.success) {
                         // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                         alert(`Producto actualizado`);
+                        location.reload();
                     } else {
                         alert("Error al actualizar el producto");
+                        location.reload();
                     }
                 })
                 .catch(error => {
                     console.error("Error:", error);
-                    alert("Error al comunicarse con el servidor");
+                    location.reload();
+                   
                 });
             }
 
@@ -241,19 +244,24 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                     if (json.success) {
                         // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                         alert(`Producto borrado`);
+                        location.reload();
                     } else {
                         alert("Error al borrar el producto");
+                        location.reload();
                     }
                 })
+                .catch(error => {
+                    console.error("Error:", error);
+                    location.reload();
+                   
+                });
             }
 
-            function addProductData(id) {
+            function addProductData() {
                 // Obtener los datos del formulario dinámicamente
-                const button = document.querySelector(`button[onclick="updateProductData(${id})"]`);
-                const form = button.closest('form');
+                const form = document.querySelector('.producto-form-add');
                 
                 const producto = {
-                    IDproducto: form.querySelector('#IDproducto').value,
                     Nombre: form.querySelector('#Nombre').value,
                     PrecioBase: form.querySelector('#PrecioBase').value,
                     IDdescuento: form.querySelector('#IDdescuento').value,
@@ -261,7 +269,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 };
 
                 // Hacer el fetch para actualizar los datos en el servidor
-                fetch("?controller=apiproductos&action=updateproductosapi", {
+                fetch("?controller=apiproductos&action=addproductosapi", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -283,13 +291,16 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                     if (json.success) {
                         // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                         alert(`Producto actualizado`);
+                        location.reload();
                     } else {
                         alert("Error al actualizar el producto");
+                        location.reload();
                     }
                 })
                 .catch(error => {
                     console.error("Error:", error);
-                    alert("Error al comunicarse con el servidor");
+                    location.reload();
+                   
                 });
             }
 
