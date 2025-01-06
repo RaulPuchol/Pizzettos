@@ -22,16 +22,16 @@
 include_once header;
 ?>
 
-<div id="carouselExampleAutoplaying " class="carousel slide carrusel" data-bs-ride="carousel">
+<div id="carouselExampleAutoplaying " class="carousel slide carrusel" data-bs-ride="carousel" data-bs-wrap="true">
     <div class="carousel-inner imagenes">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="Images/webadd (1).png" alt="Imagen 1">
+            <img class="d-block w-100" src="Images/webadd1.webp" alt="Imagen 1">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="Images/webadd (1).png" alt="Imagen 2">
+            <img class="d-block w-100" src="Images/webadd2.webp" alt="Imagen 2">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="Images/webadd (1).png" alt="Imagen 3">
+            <img class="d-block w-100" src="Images/webadd3.webp" alt="Imagen 3">
         </div>
     </div>
 </div>
@@ -66,28 +66,28 @@ include_once header;
 </section>
 
 <section id="bottomindex" class="container-fluid m-0">
-    <img class="imagebig" src="Images/webadd (1).png">
+    <img class="imagebig" src="Images/webadd3.webp">
     <div class="bottomindeximages">
         <div class="images row w-100">
             <div class="col">
-                <img src="Images/promotional_pizza_427x427.png">
+                <img src="Images/pizzapromo1.webp">
             </div>
             <div class="col">
-                <img src="Images/promotional_pizza_427x427.png">
+                <img src="Images/pizzapromo.webp">
             </div>
             <div class="col">
-                <img src="Images/promotional_pizza_427x427.png">
+                <img src="Images/pizzapromo2.webp">
             </div>
         </div>
         <div class="images row w-100">
             <div class="col">
-                <img src="Images/promotional_pizza_427x427.png">
+                <img src="Images/pizzapromo3.webp">
             </div>
             <div class="col">
-                <img src="Images/promotional_pizza_427x427.png">
+                <img src="Images/pizzapromo4.webp">
             </div>
             <div class="col">
-                <img src="Images/promotional_pizza_427x427.png">
+                <img src="Images/pizzapromo5.webp">
             </div>
         </div>
     </div>

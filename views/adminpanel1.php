@@ -54,12 +54,12 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
         <div class="adminpanelright">
 
             <div id="productoadd">
-                <form class="producto-form-add">
-                    <div><p>Nombre del Producto:</p> <input id="Nombre" Requiered></div>
-                    <div><p>Precio del Producto:</p> <input id="PrecioBase" Requiered></div>
-                    <div><p>ID Descuento:</p> <input class="inputshort" id="IDdescuento" Requiered></div>
-                    <div><p>ID Categoria:</p> <input class="inputshort" id="IDcategoria" Requiered></div>
-                    <button type="button" onclick="addProductData()">Añadir</button>
+                <form class="pedido-form-add">
+                    <div><p>Email del Pedido:</p> <input id="emailusuario" requiered></div>
+                    <div><p>Cantidad del pedido:</p> <input id="Cantidad" requiered></div>
+                    <div><p>Precio del pedido:</p> <input id="Precio" requiered></div>
+                    <div><p>ID descuento:</p> <input id="IDdescuento" requiered></div>
+                    <button type="button" onclick="addPedidoData()">Añadir</button>
                 </form>
             </div> 
             <div id="producto">
@@ -74,12 +74,11 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
 
 
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script>     
-        fetch('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_YK3FqEYXXfnRdW6P8EHZtmB96cdGqENL1Vai4uVk&base_currency=EUR')
+    // Llamada a la API usando fetch
+    fetch('?controller=apipedidos&action=getpedidosapi')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener los datos');
@@ -87,110 +86,69 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             return response.json();
         })
         .then(data => {
-            const transformprecio = data.data;
+            const pedido1 = document.getElementById('producto');
+            
+            // Limpiar la tabla antes de agregar datos (opcional)
+            // Agregar cada producto como una fila de la tabla
+            data.forEach(pedido => {
+                const bloque = document.createElement('div');
+                bloque.innerHTML = `
+                    
+                    <div>
+                    <p>IDpedido:</p> 
+                    <p>${pedido.IDpedido}</p>
 
-            // Llamada al segundo fetch: Productos
-            fetch('?controller=apiproductos&action=getproductosapi')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al obtener los datos');
-                    }
-                    return response.json();
-                })
-                .then(productos => {
-                    const productoContainer = document.getElementById('producto');
-                    productoContainer.innerHTML = ''; // Limpiar el contenedor
+                    <form class="delete-form">
+                        <input type="hidden" name="IDpedido" id="IDpedidod" value="${pedido.IDpedido}">
+                        <button type="button" onclick="deletePedidoData(${pedido.IDpedido})">Eliminar</button>
+                    </form>
+                    
 
-                    productos.forEach(producto => {
-                        const bloque = document.createElement('div');
-                        const uniqueID = `PrecioBase-${producto.IDproducto}`; // ID único para el precio base
+                    </div>
 
-                        bloque.innerHTML = `
-                            <div>
-                                <p>IDproducto:</p> 
-                                <p>${producto.IDproducto}</p>
-                                <form class="delete-form">
-                                    <input type="hidden" name="IDproducto" value="${producto.IDproducto}">
-                                    <button type="button" onclick="deleteProductData(${producto.IDproducto})">Eliminar</button>
-                                </form>
-                            </div>
-                            <img src="Images/${producto.Imagen}.webp">
-                            <form class="producto-form">
-                                <input type="hidden" id="IDproducto" value="${producto.IDproducto}">
-                                <div><p>Nombre del Producto:</p> <input id="Nombre" value="${producto.Nombre}"></div>
-                                <div><p>Precio del Producto:</p> <input id="${uniqueID}" value="${producto.PrecioBase}" data-original="${producto.PrecioBase}"></div>
-                                <div><p>ID Descuento:</p> <input id="IDdescuento" value="${producto.IDdescuento}"></div>
-                                <div><p>ID Categoria:</p> <input id="IDcategoria" value="${producto.IDcategoria}"></div>
-                                <button type="button" onclick="updateProductData(${producto.IDproducto})">Actualizar</button>
-                            </form>
-                        `;
-
-                        productoContainer.appendChild(bloque);
-
-                        // Crear y agregar select de monedas
-                        const select = document.createElement('select');
-                        select.classList.add('moneyselect');
-
-                        Object.keys(transformprecio).forEach(moneda => {
-                            const option = document.createElement('option');
-                            option.value = moneda;
-                            option.textContent = moneda;
-                            select.appendChild(option);
-                        });
-
-                        // Evento para actualizar el precio
-                        select.addEventListener('change', () => {
-                            const monedaSeleccionada = select.value;
-                            const tasaCambio = transformprecio[monedaSeleccionada];
-                            const precioBaseInput = document.getElementById(uniqueID);
-
-                            // Recuperar el precio original
-                            const precioOriginal = parseFloat(precioBaseInput.getAttribute('data-original')) || 0;
-
-                            // Si selecciona EUR, restablece el precio original
-                            if (monedaSeleccionada === 'EUR') {
-                                precioBaseInput.value = precioOriginal.toFixed(2);
-                            } else {
-                                // Calcular el precio con la tasa de cambio
-                                const nuevoPrecio = (precioOriginal * tasaCambio).toFixed(2);
-                                precioBaseInput.value = nuevoPrecio;
-                            }
-                        });
-
-                        bloque.appendChild(select);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error al cargar los productos:', error);
-                });
+                    <form class="pedido-form">
+                        <input type="hidden" id="IDpedido" value="${pedido.IDpedido}">
+                        <div><p>Email del Pedido:</p> <input id="emailusuario" value="${pedido.emailusuario}"></div>
+                        <div><p>Fecha del Pedido:</p> <input id="Fechapedido" value="${pedido.Fechapedido}"></div>
+                        <div><p>Cantidad del pedido:</p> <input class="inputshort" id="Cantidad" value="${pedido.Cantidad}"></div>
+                        <div><p>Precio:</p> <input id="Precio" value="${pedido.Precio}"></div>
+                        <div><p>ID descuento:</p> <input class="inputshort" id="IDdescuento" value="${pedido.IDdescuento}"></div>
+                        <button type="button" onclick="updatePedidoData(${pedido.IDpedido})">Actualizar</button>
+                    </form>
+                `;
+                pedido1.appendChild(bloque);
+                const form = document.getElementById('pedido-form');
+                const dform = document.getElementById('delete-form');
+            });
         })
         .catch(error => {
-            console.error('Error al cargar los datos de monedas:', error);
+            console.error('Error al cargar los datos:', error);
         });
 
 
         // Seleccionar todos los botones de actualización
         
-        function updateProductData(id) {
+        function updatePedidoData(id) {
             // Obtener los datos del formulario dinámicamente
-            const button = document.querySelector(`button[onclick="updateProductData(${id})"]`);
+            const button = document.querySelector(`button[onclick="updatePedidoData(${id})"]`);
             const form = button.closest('form');
             
-            const producto = {
-                IDproducto: form.querySelector('#IDproducto').value,
-                Nombre: form.querySelector('#Nombre').value,
-                PrecioBase: form.querySelector('#PrecioBase').value,
-                IDdescuento: form.querySelector('#IDdescuento').value,
-                IDcategoria: form.querySelector('#IDcategoria').value
+            const pedido = {
+                IDpedido: form.querySelector('#IDpedido').value,
+                emailusuario: form.querySelector('#emailusuario').value,
+                Fechapedido: form.querySelector('#Fechapedido').value,
+                Cantidad: form.querySelector('#Cantidad').value,
+                Precio: form.querySelector('#Precio').value,
+                IDdescuento: form.querySelector('#IDdescuento').value
             };
 
             // Hacer el fetch para actualizar los datos en el servidor
-            fetch("?controller=apiproductos&action=updateproductosapi", {
+            fetch("?controller=apipedidos&action=updatepedidosapi", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(producto)  // Enviar el objeto 'producto' con los valores del formulario
+                body: JSON.stringify(pedido)  // Enviar el objeto 'producto' con los valores del formulario
             })
             .then(response => {
                 // Inspecciona el contenido de la respuesta
@@ -220,22 +178,22 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             });
         }
 
-        function deleteProductData(id) {
+        function deletePedidoData(id) {
             // Obtener los datos del formulario dinámicamente
-            const button = document.querySelector(`button[onclick="deleteProductData(${id})"]`);
+            const button = document.querySelector(`button[onclick="deletePedidoData(${id})"]`);
             const dform = button.closest('form');
             
-            const producto = {
-                IDproducto: dform.querySelector('#IDproductod').value
+            const pedido = {
+                IDpedido: dform.querySelector('#IDpedidod').value
             };
 
             // Hacer el fetch para actualizar los datos en el servidor
-            fetch("?controller=apiproductos&action=deleteproductosapi", {
+            fetch("?controller=apipedidos&action=deletepedidosapi", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(producto)  // Enviar el objeto 'producto' con los valores del formulario
+                body: JSON.stringify(pedido)  // Enviar el objeto 'pedido' con los valores del formulario
                 
             })
             .then(response => {
@@ -266,24 +224,24 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             });
         }
 
-        function addProductData() {
+        function addPedidoData() {
             // Obtener los datos del formulario dinámicamente
-            const form = document.querySelector('.producto-form-add');
+            const form = document.querySelector('.pedido-form-add');
             
-            const producto = {
-                Nombre: form.querySelector('#Nombre').value,
-                PrecioBase: form.querySelector('#PrecioBase').value,
-                IDdescuento: form.querySelector('#IDdescuento').value,
-                IDcategoria: form.querySelector('#IDcategoria').value
+            const pedido = {
+                emailusuario: form.querySelector('#emailusuario').value,
+                Cantidad: form.querySelector('#Cantidad').value,
+                Precio: form.querySelector('#Precio').value,
+                IDdescuento: form.querySelector('#IDdescuento').value
             };
 
             // Hacer el fetch para actualizar los datos en el servidor
-            fetch("?controller=apiproductos&action=addproductosapi", {
+            fetch("?controller=apipedidos&action=addpedidosapi", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(producto)  // Enviar el objeto 'producto' con los valores del formulario
+                body: JSON.stringify(pedido)  // Enviar el objeto 'Pedido' con los valores del formulario
             })
             .then(response => {
                 // Inspecciona el contenido de la respuesta
@@ -298,11 +256,11 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             })
             .then(json => {
                 if (json.success) {
-                    // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
-                    alert(`Producto actualizado`);
+                    // actualizado
+                    alert(`Pedido actualizado`);
                     location.reload();
                 } else {
-                    alert("Error al actualizar el producto");
+                    alert("Error al actualizar el Pedido");
                     location.reload();
                 }
             })

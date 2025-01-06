@@ -100,9 +100,7 @@ text-decoration: none;
     padding-left: 2%;
 }
 
-.adminpanelright #producto div {
-    border: #001C85 solid 1px;
-}
+
 
 .adminpanelright #producto div div{
     background-color: white;

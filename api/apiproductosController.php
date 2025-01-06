@@ -78,10 +78,11 @@ class apiproductosController{
         $precioBase = isset($input['PrecioBase']) ? $input['PrecioBase'] : null;
         $idDescuento = isset($input['IDdescuento']) ? $input['IDdescuento'] : null;
         $idCategoria = isset($input['IDcategoria']) ? $input['IDcategoria'] : null;
+        $imagen = "pizza";
             
         $con = DataBase::connect();
-        $stmt = $con->prepare("INSERT INTO Producto (Nombre, PrecioBase, IDdescuento, IDcategoria) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sdii", $nombre, $precioBase, $idDescuento, $idCategoria);
+        $stmt = $con->prepare("INSERT INTO Producto (Nombre, PrecioBase, Imagen, IDdescuento, IDcategoria) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sdsii", $nombre, $precioBase, $imagen, $idDescuento, $idCategoria);
         $stmt->execute();
 
         $stmt->close();

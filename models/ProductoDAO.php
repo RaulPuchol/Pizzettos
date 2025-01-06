@@ -39,7 +39,7 @@ class ProductoDAO {
         if ($result->num_rows > 0) {
             // Si ya existe, actualiza sumando la cantidad
             $row = $result->fetch_assoc();
-            $nuevaCantidad = $row['Cantidad'] + $cantidad;
+            $nuevaCantidad = $row['cantidad'] + $cantidad;
     
             $stmt = $con->prepare("UPDATE Carrito SET cantidad = ? WHERE emailCarrito = ? AND idproducto = ?");
             $stmt->bind_param("isi", $nuevaCantidad, $emailCarrito, $idproducto);

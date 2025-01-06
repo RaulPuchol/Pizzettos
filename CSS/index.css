@@ -366,6 +366,7 @@ footer div{
 
 .bottomindeximages .images div img {
     width: 375px;
+    height: 375px;
     border-radius: 15px;
    
 }

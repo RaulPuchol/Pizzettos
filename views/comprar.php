@@ -135,7 +135,7 @@ if (isset($_POST['descuento'])) {
                                     <input type="hidden" name="email" value="<?= $email?>">
                                     <input type="hidden" name="precio" value="<?= $precio?>">
                                     <input type="hidden" name="cantidad" value="<?= $cantidad?>">
-                                    <input  name="descuento" id="descuentoid" value="<?= htmlspecialchars($descuentoAplicado) ?>">
+                                    <input  type="hidden" name="descuento" id="descuentoid" value="<?= htmlspecialchars($descuentoAplicado) ?>">
                                     <button type="submit">Comprar en efectivo</button>
                                 </div>
                                 <div>

@@ -42,7 +42,7 @@ class loginController{
                 session_destroy();
                 session_start();
                 $_SESSION['email'] = $email;
-
+                UsuarioDAO::logLogin($email, date("Y-m-d H:i:s"), "Sesion iniciada");
                 header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=index");
             } else {
                 echo"<p>Usuario o Contraseña incorrectas</p>";
@@ -54,6 +54,7 @@ class loginController{
 
     public function logout(){
         session_start();
+        UsuarioDAO::logLogout($_SESSION['email'], date("Y-m-d H:i:s"), "Sesion cerrada");
         session_destroy();
         header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=index");
     }

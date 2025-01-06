@@ -39,7 +39,6 @@ if (isset($_SESSION['email'])) {
     </header>
 
     <section id="register">
-        <h1>Pene</h1>
         <div class="buttonsregister">
         <a href="?controller=login&action=login"><button>Ya tengo cuenta</button></a>
         <a><button>Aún no tengo cuenta</button></a>

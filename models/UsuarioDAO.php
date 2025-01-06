@@ -53,4 +53,23 @@ class UsuarioDAO {
         return $pedidos;
     }
     
+    public static function logLogin($email, $fecha, $mensaje) {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("INSERT INTO log (email, fecha, mensaje) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $email, $fecha, $mensaje);
+        $stmt->execute();
+
+        $stmt->close();
+    }
+    
+    public static function logLogout($email, $fecha, $mensaje) {
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("INSERT INTO log (email, fecha, mensaje) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $email, $fecha, $mensaje);
+        $stmt->execute();
+
+        $stmt->close();
+    }
 }
