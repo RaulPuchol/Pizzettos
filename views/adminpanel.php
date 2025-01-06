@@ -205,7 +205,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             })
             .then(json => {
                 if (json.success) {
-                    // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                     alert(`Producto actualizado`);
                     location.reload();
                 } else {
@@ -251,7 +250,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             })
             .then(json => {
                 if (json.success) {
-                    // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                     alert(`Producto borrado`);
                     location.reload();
                 } else {
@@ -298,7 +296,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             })
             .then(json => {
                 if (json.success) {
-                    // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
+
                     alert(`Producto actualizado`);
                     location.reload();
                 } else {

@@ -184,11 +184,11 @@ if (isset($_POST['descuento'])) {
                 <div class="total">
                     <p>TOTAL:</p>
 
-                    <?php $total = 0;
+                    <?php $total = 0; // Calcula el total de la compra
                     foreach (productoController::getProductosCarrito($email) as $producto){
                         $total += $producto->getPrecioBase() * $producto->cantidad;
                     } 
-                    
+                    // Si hay descuento
                     if (isset($_POST['descuento'])) {
                         $session = new productoController();
                         $descuentoAplicado = $session->descuento($_POST['descuento']);

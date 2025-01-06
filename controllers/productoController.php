@@ -2,24 +2,24 @@
 include_once("models/ProductoDAO.php");
 
 class productoController{
-    public function index(){
+    public function index(){ // función que muestra la vista de inicio
         include_once("views/index.php");
     }
-    public function pizzas(){
+    public function pizzas(){ // función que muestra la vista de pizzas
         include_once("views/pizzas.php");
     }
-    public function comprar(){
+    public function comprar(){ // función que muestra la vista de comprar
         include_once("views/comprar.php");
     }
 
-    public function nombreProducto() {
+    public function nombreProducto() { // función que obtiene los productos de la base de datos
         return ProductoDAO::getAll();
     }
 
     
 
 
-    public function meterAlCarrito($emailCarrito, $idproducto) {
+    public function meterAlCarrito($emailCarrito, $idproducto) { // función que añade un producto al carrito
 
         if ($emailCarrito === "none"){
             header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
@@ -30,7 +30,7 @@ class productoController{
         
     }
 
-    public function getProductosCarrito($email) {
+    public function getProductosCarrito($email) { // función que obtiene los productos del carrito
 
         
         return productoDAO::getProductosDelCarrito($email);
@@ -38,14 +38,14 @@ class productoController{
         
     }
 
-    public function deletefromCarrito() {
+    public function deletefromCarrito() { // función que elimina un producto del carrito
         $idcarrito = $_POST['idcarrito'];
         $url = $_POST['currentUrl'];
         productoDAO::deleteProductoDelCarrito($idcarrito);
         header ("Location: ". $url);
     }
 
-    public function comprarproductos() {
+    public function comprarproductos() { // función que añade un pedido a la base de datos
         $emailusuario = $_POST['email'];
         $fechapedido = date("Y-m-d H:i:s");
         $cantidad = $_POST['cantidad'];
@@ -62,13 +62,19 @@ class productoController{
             $precio -= $descuentoCalculado; 
         }
 
-        productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, number_format($precio,2), $iddescuento);
+        if($precio > 0) {
+            productoDAO::nuevopedido($emailusuario, $fechapedido, $cantidad, number_format($precio,2), $iddescuento);
+            header ("location: ?controller=login&action=pedidos");
+        } else {
+            header ("location: ?controller=producto&action=comprar");
+        }
+        
 
-        header ("location: ?controller=login&action=pedidos");
+        
     }
 
 
-    public function descuento($descuento) {
+    public function descuento($descuento) { // función que valida un descuento
         $result = productoDAO::validarDescuento($descuento);
         // Comprobar si existe el descuento
         if ($result->num_rows > 0) {
@@ -80,7 +86,7 @@ class productoController{
 
     }
 
-    public function descuento1($descuento) {
+    public function descuento1($descuento) { // función que valida un descuento
         $result = productoDAO::validarDescuento($descuento);
         // Comprobar si existe el descuento
         if ($result->num_rows > 0) {

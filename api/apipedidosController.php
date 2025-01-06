@@ -1,13 +1,13 @@
 <?php
-include_once("config/dataBase.php");
-include_once("script/getHeadersApi.php");
+include_once("config/dataBase.php"); // incluye la clase de conexión a la base de datos
+include_once("script/getHeadersApi.php"); // incluye la clase que obtiene los headers de la API
 
 class apipedidosController{
-    public static function adminpanel1(){
+    public static function adminpanel1(){ // función que muestra la vista del panel de administración
         include_once("views/adminpanel1.php");
     }
 
-    public static function getpedidosapi() {
+    public static function getpedidosapi() { // función que obtiene los pedidos de la base de datos
         
         $con = DataBase::connect();
 
@@ -26,7 +26,7 @@ class apipedidosController{
 
     }
 
-    public static function deletepedidosapi() {
+    public static function deletepedidosapi() { // función que elimina un pedido de la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $idPedido = isset($input['IDpedido']) ? $input['IDpedido'] : null;
@@ -49,9 +49,8 @@ class apipedidosController{
             echo json_encode(["success" => false, "message" => "No se pudo borrar el pedido "]);
         }
     }
-    //deleteitems hecho
 
-    public static function updatepedidosapi() {
+    public static function updatepedidosapi() { // función que actualiza un pedido de la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $idPedido = isset($input['IDpedido']) ? $input['IDpedido'] : null;
@@ -78,7 +77,7 @@ class apipedidosController{
         }
     }
 
-    public static function addpedidosapi() {
+    public static function addpedidosapi() { // función que añade un pedido a la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $emailusuario = isset($input['emailusuario']) ? $input['emailusuario'] : null;

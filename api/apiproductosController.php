@@ -1,13 +1,13 @@
 <?php
-include_once("config/dataBase.php");
-include_once("script/getHeadersApi.php");
+include_once("config/dataBase.php"); // incluye la clase de conexión a la base de datos
+include_once("script/getHeadersApi.php"); // incluye la clase que obtiene los headers de la API
 
 class apiproductosController{
-    public static function adminpanel(){
+    public static function adminpanel(){ // función que muestra la vista del panel de administración
         include_once("views/adminpanel.php");
     }
 
-    public static function getproductosapi() {
+    public static function getproductosapi() { // función que obtiene los producto de la base de datos
         
         $con = DataBase::connect();
 
@@ -26,7 +26,7 @@ class apiproductosController{
 
     }
 
-    public static function deleteproductosapi() {
+    public static function deleteproductosapi() { // función que elimina un producto de la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $idProducto = isset($input['IDproducto']) ? $input['IDproducto'] : null;
@@ -47,7 +47,7 @@ class apiproductosController{
     }
     //deleteitems hecho
 
-    public static function updateproductosapi() {
+    public static function updateproductosapi() { // función que actualiza un producto de la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $idProducto = isset($input['IDproducto']) ? $input['IDproducto'] : null;
@@ -71,7 +71,7 @@ class apiproductosController{
         }
     }
 
-    public static function addproductosapi() {
+    public static function addproductosapi() { // función que añade un producto a la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $nombre = isset($input['Nombre']) ? $input['Nombre'] : null;

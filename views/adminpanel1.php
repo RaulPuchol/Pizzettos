@@ -148,7 +148,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(pedido)  // Enviar el objeto 'producto' con los valores del formulario
+                body: JSON.stringify(pedido)  // Enviar el objeto 'pedido' con los valores del formulario
             })
             .then(response => {
                 // Inspecciona el contenido de la respuesta
@@ -163,7 +163,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             })
             .then(json => {
                 if (json.success) {
-                    // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                     alert(`Producto actualizado`);
                     location.reload();
                 } else {
@@ -209,7 +208,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] == "none" || $_SESSION['ema
             })
             .then(json => {
                 if (json.success) {
-                    // Aquí puedes hacer lo que necesites, como actualizar la interfaz con los datos actualizados
                     alert(`Producto borrado`);
                     location.reload();
                 } else {

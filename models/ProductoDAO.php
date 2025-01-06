@@ -1,9 +1,9 @@
 <?php
-include_once("models/Productos.php");
-include_once("config/dataBase.php");
+include_once("models/Productos.php"); // incluir el archivo de la clase Productos
+include_once("config/dataBase.php"); // incluir el archivo de la clase de conexión a la base de datos
 
 class ProductoDAO {
-    public static function getAll() {
+    public static function getAll() { // función que obtiene los productos de la base de datos
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM Producto");
@@ -27,7 +27,7 @@ class ProductoDAO {
         return $productos;
     }
 
-    public static function insertCarrito($emailCarrito, $idproducto, $cantidad) {
+    public static function insertCarrito($emailCarrito, $idproducto, $cantidad) { // función que inserta un producto en el carrito
         $con = DataBase::connect();
         //Comprueba si ya existe en la base de dato
         $stmt = $stmt = $con->prepare("SELECT * FROM Carrito WHERE emailCarrito = ? AND idproducto = ?");
@@ -57,7 +57,7 @@ class ProductoDAO {
         
     }
 
-    public static function getProductosDelCarrito($emailCarrito) {
+    public static function getProductosDelCarrito($emailCarrito) { // función que obtiene los productos del carrito
         $con = DataBase::connect();
     
         $stmt = $con->prepare("
@@ -90,7 +90,7 @@ class ProductoDAO {
         return $productos;
     }
 
-    public static function deleteProductoDelCarrito($idcarrito) {
+    public static function deleteProductoDelCarrito($idcarrito) { // función que elimina un producto del carrito
         $con = DataBase::connect();
 
         $stmt = $con->prepare("DELETE FROM Carrito WHERE ID=?");
@@ -100,7 +100,7 @@ class ProductoDAO {
         
     }
 
-    public static function nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento) {
+    public static function nuevopedido($emailusuario, $fechapedido, $cantidad, $precio, $iddescuento) { // función que añade un pedido a la base de datos
         $con = DataBase::connect();
 
         $stmt = $con->prepare("INSERT INTO Pedido (emailusuario, Fechapedido, Cantidad, Precio, IDdescuento) VALUES (?, ?, ?, ?, ?)");
@@ -132,7 +132,7 @@ class ProductoDAO {
         
     }
 
-    public static function validarDescuento($descuento) {
+    public static function validarDescuento($descuento) { // función que valida un descuento
         $con = DataBase::connect();
 
         // Preparar la consulta

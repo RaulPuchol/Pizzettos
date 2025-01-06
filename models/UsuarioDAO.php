@@ -3,7 +3,7 @@ include_once("config/dataBase.php");
 include_once("models/Pedido.php");
 
 class UsuarioDAO {
-    public static function iniciarsesion($email) {
+    public static function iniciarsesion($email) { // función que inicia sesión
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM Usuario WHERE email = ?");
@@ -24,7 +24,7 @@ class UsuarioDAO {
         header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=login&action=login");
     }
 
-    public static function pedidos($emailusuario) {
+    public static function pedidos($emailusuario) { // función que obtiene los pedidos de un usuario
 
 
 
@@ -53,7 +53,7 @@ class UsuarioDAO {
         return $pedidos;
     }
     
-    public static function logLogin($email, $fecha, $mensaje) {
+    public static function logLogin($email, $fecha, $mensaje) { // función que añade un log de inicio de sesión
         $con = DataBase::connect();
 
         $stmt = $con->prepare("INSERT INTO log (email, fecha, mensaje) VALUES (?,?,?)");
@@ -63,7 +63,7 @@ class UsuarioDAO {
         $stmt->close();
     }
     
-    public static function logLogout($email, $fecha, $mensaje) {
+    public static function logLogout($email, $fecha, $mensaje) { // función que añade un log de cierre de sesión
         $con = DataBase::connect();
 
         $stmt = $con->prepare("INSERT INTO log (email, fecha, mensaje) VALUES (?,?,?)");

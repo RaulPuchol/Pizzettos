@@ -1,13 +1,13 @@
 <?php
-include_once("config/dataBase.php");
-include_once("script/getHeadersApi.php");
+include_once("config/dataBase.php"); // incluye la clase de conexión a la base de datos
+include_once("script/getHeadersApi.php"); // incluye la clase que obtiene los headers de la API
 
 class apiusuariosController{
-    public static function adminpanel2(){
+    public static function adminpanel2(){ // función que muestra la vista del panel de administración
         include_once("views/adminpanel2.php");
     }
 
-    public static function getusuariosapi() {
+    public static function getusuariosapi() { // función que obtiene los usuarios de la base de datos
         
         $con = DataBase::connect();
 
@@ -26,7 +26,7 @@ class apiusuariosController{
 
     }
 
-    public static function deleteusuariosapi() {
+    public static function deleteusuariosapi() { // función que elimina un usuario de la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $idUsuario = isset($input['IDusuario']) ? $input['IDusuario'] : null;
@@ -47,7 +47,7 @@ class apiusuariosController{
     }
     //deleteitems hecho
 
-    public static function updateusuariosapi() {
+    public static function updateusuariosapi() { // función que actualiza un usuario de la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $idUsuario = isset($input['IDusuario']) ? $input['IDusuario'] : null;
@@ -69,7 +69,7 @@ class apiusuariosController{
         }
     }
 
-    public static function addusuariosapi() {
+    public static function addusuariosapi() { // función que añade un usuario a la base de datos
         getHeadersApi::getHeadersapi();
         $input = json_decode(file_get_contents('php://input'), true);
         $email = isset($input['email']) ? $input['email'] : null;

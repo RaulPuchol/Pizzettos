@@ -1,25 +1,25 @@
 <?php
-include_once("models/UsuarioDAO.php");
+include_once("models/UsuarioDAO.php"); // incluir el archivo de la clase UsuarioDAO
 
 class loginController{
-    public function login(){
+    public function login(){ // función que muestra la vista de login
         include_once("views/login.php");
     }
-    public function register(){
+    public function register(){ // función que muestra la vista de registro
         include_once("views/register.php");
     }
-    public function profile(){
+    public function profile(){ // función que muestra la vista de perfil
         include_once("views/profile.php");
     }
-    public function pedidos(){
+    public function pedidos(){ // función que muestra la vista de pedidos
         include_once("views/pedidos.php");
     }
 
-    public static function nombrePedido($emailCarrito) {
+    public static function nombrePedido($emailCarrito) { // función que obtienes los pedidos de un usuario
         return UsuarioDAO::pedidos($emailCarrito);
     }
 
-    public function createAccount(){
+    public function createAccount(){ // función que crea una cuenta
         $email = $_POST['email'];
         $usuario = $_POST['nombre'];
         $passwd = $_POST['passwd'];
@@ -28,7 +28,7 @@ class loginController{
         UsuarioDAO::insertarUsuario($email, $usuario, $passwdHash);
     }
 
-    public function getAccount($email, $passwd) {
+    public function getAccount($email, $passwd) { // función que inicia sesión
         //$email = $_POST['email'];
         //$passwd = $_POST['passwd'];
 
@@ -52,7 +52,7 @@ class loginController{
         }
     }
 
-    public function logout(){
+    public function logout(){ // función que cierra sesión
         session_start();
         UsuarioDAO::logLogout($_SESSION['email'], date("Y-m-d H:i:s"), "Sesion cerrada");
         session_destroy();
