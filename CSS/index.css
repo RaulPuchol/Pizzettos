@@ -484,16 +484,49 @@ footer div{
     display: flex;
     flex-direction: column;
     width:auto;
+    
 }
 
-.carrito .productoCarrito {
+.carrito .productoCarrito{
     border: #56565648 solid 1px;
     margin-bottom: 5px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
 }
 .carrito .productoCarrito img {
     width: 80px;
     height: 80px;
+}
+
+.productoCarrito div:nth-child(1)  {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.productoCarrito div button {
+    border: none;
+    color:#001C85;
+    background: none;
+    margin-top: 2%;
+}
+
+.productoCarrito div a {
+    text-decoration: none;
+    color:#565656;
+}
+
+.productoCarrito .dinero p {
+    color:#001C85;
+    font-size: 20px;
+    font-weight: bold;
+}
+.productoCarrito .dinero {
+    margin-right: 2%;
 }
 
 

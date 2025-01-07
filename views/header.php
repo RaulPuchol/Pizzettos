@@ -102,15 +102,25 @@
             <div class="carrito">
                 <?php foreach (productoController::getProductosCarrito($email) as $producto): ?>
                     <div class="productoCarrito">
-                        <img src="Images/<?= $producto->getImagen(); ?>.webp">
-                        <p><a href="#buy"><?= $producto->getNombre(); ?></a><p><?= $producto->cantidad?></p></p>
-                        <p><?= $producto->getPrecioBase() * $producto->cantidad; ?> €</p>
+                        
+                        <div>
+                            <img src="Images/<?= $producto->getImagen(); ?>.webp">
+                            <div>
+                                <p><a href="#buy"><?= $producto->getNombre(); ?></a>
+                                <p><?= $producto->cantidad?></p>
+                            </div>
+                        </div>
 
-                        <form action="?controller=producto&action=deletefromCarrito" method="post">
-                            <input type="hidden" name="idcarrito" value="<?= $producto->IDcarrito?>">
-                            <input type="hidden" name="currentUrl" id="currentUrl">
-                            <button type="submit">Eliminar</button>
-                        </form>
+                        <div class="dinero">
+                            <p><?= $producto->getPrecioBase() * $producto->cantidad; ?> €</p>
+                        
+                            <form action="?controller=producto&action=deletefromCarrito" method="post">
+                                <input type="hidden" name="idcarrito" value="<?= $producto->IDcarrito?>">
+                                <input type="hidden" name="currentUrl" id="currentUrl">
+                                <button type="submit">Eliminar <i class="fa-solid fa-trash-can"></i></button>
+                            </form>
+                        </div>
+
                     </div> 
                 <?php endforeach; ?>
             </div>
