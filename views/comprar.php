@@ -155,12 +155,12 @@ if (isset($_POST['descuento'])) {
                             <div class="productoCarrito">
                                 <img src="Images/<?= $producto->getImagen(); ?>.webp">
                                 <p><a href="#buy"><?= $producto->getNombre(); ?></a><p><?= $producto->cantidad?></p></p>
-                                <p><?= $producto->getPrecioBase() * $producto->cantidad; ?> €</p>
+                                <p class="dinero1"><?= $producto->getPrecioBase() * $producto->cantidad; ?> €</p>
 
                                 <form action="?controller=producto&action=deletefromCarrito" method="post">
                                     <input type="hidden" name="idcarrito" value="<?= $producto->IDcarrito?>">
                                     <input type="hidden" name="currentUrl" id="currentUrl">
-                                    <button type="submit">Eliminar</button>
+                                    <button type="submit">Eliminar <i class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </div> 
                         <?php endforeach; ?>

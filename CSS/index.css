@@ -590,10 +590,6 @@ footer div{
     color:#001C85;
     font-weight: bold;
 }
-
-.comprarright {
-    /*ayuda el sticky no funciona*/
-}
 .comprarright div {
     
     background-color: #F8F9FD;
@@ -614,6 +610,8 @@ footer div{
     width:auto;
 }
 
+
+
 .carritocompra .productoCarrito {
     border: #56565648 solid 1px;
     margin-bottom: 5px;
@@ -622,6 +620,23 @@ footer div{
 .carritocompra .productoCarrito img {
     width: 80px;
     height: 80px;
+}
+
+.carritocompra .productoCarrito a {
+    text-decoration: none;
+    color:#565656;
+}
+
+.carritocompra .productoCarrito .dinero1 {
+    color:#001C85;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.carritocompra .productoCarrito button {
+    border: none;
+    color:#001C85;
+    background: none;
 }
 
 .searchercarrito {
