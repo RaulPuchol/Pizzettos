@@ -8,7 +8,7 @@ class apiproductosController{
     }
 
     public static function getproductosapi() { // función que obtiene los producto de la base de datos
-        
+        getHeadersApi::getHeadersapi();
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM Producto");
@@ -17,7 +17,6 @@ class apiproductosController{
 
         if ($result->num_rows > 0) {
             $productos = $result->fetch_all(MYSQLI_ASSOC);
-            http_response_code(200); // Respuesta exitosa
             echo json_encode($productos);
         } else {
             http_response_code(404); // No encontrado

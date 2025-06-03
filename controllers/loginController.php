@@ -43,6 +43,8 @@ class loginController{
                 session_start();
                 $_SESSION['email'] = $email;
                 UsuarioDAO::logLogin($email, date("Y-m-d H:i:s"), "Sesion iniciada");
+                setcookie("session_user", $email, time() + 3600, "/"); // Cookie válida por 1 hora
+                
                 header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=index");
             } else {
                 echo"<p>Usuario o Contraseña incorrectas</p>";
@@ -55,6 +57,7 @@ class loginController{
     public function logout(){ // función que cierra sesión
         session_start();
         UsuarioDAO::logLogout($_SESSION['email'], date("Y-m-d H:i:s"), "Sesion cerrada");
+        setcookie("session_user", "", time() - 3600, "/"); 
         session_destroy();
         header ("Location: /dashboard/Pizzettos/Pizzettos/?controller=producto&action=index");
     }

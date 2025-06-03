@@ -1,4 +1,17 @@
 <?php include_once "script/session.php"?>
+<script>
+// Verificar si la cookie de sesión existe
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();}
+
+// Si no hay sesión, redirigir al login
+const session = getCookie("session_user");
+if (!session || session.trim() == "" || session == null) {
+     window.location.href = "/dashboard/Pizzettos/Pizzettos/?controller=login&action=login";
+}
+</script>
 
 <!DOCTYPE html>
 <html lang="es">
